@@ -18,7 +18,12 @@ class ServiceAuthMiddleware(BaseHTTPMiddleware):
             return JSONResponse({"error": "missing service token"}, 401)
 
         try:
-            payload = jwt.decode(token, self.secret, algorithms=["HS256"])
+            # verify_aud=False: audience is checked manually below so PyJWT
+            # doesn't reject tokens before we can return the correct 403 status.
+            payload = jwt.decode(
+                token, self.secret, algorithms=["HS256"],
+                options={"verify_aud": False},
+            )
         except Exception:
             return JSONResponse({"error": "invalid service token"}, 401)
 

@@ -246,3 +246,96 @@ def test_trace_context_default_is_none():
         assert get_trace() is None
     finally:
         trace_ctx.reset(token)
+
+
+# ---------------------------------------------------------------------------
+# iam/client.py — IAMClient direct-instantiation tests
+# (patch deps, no module reload needed — redis.from_url is lazy)
+# ---------------------------------------------------------------------------
+
+@pytest.mark.asyncio
+async def test_iam_validate_cache_hit():
+    """Cache hit returns parsed JSON without hitting remote."""
+    with patch("iam.client.redis") as mock_redis_mod, \
+         patch("iam.client.httpx") as mock_httpx:
+        mock_redis = AsyncMock()
+        mock_redis_mod.from_url.return_value = mock_redis
+        mock_httpx.AsyncClient.return_value = AsyncMock()
+
+        from iam.client import IAMClient
+        client = IAMClient(base_url="http://auth:8001", redis_url="redis://localhost")
+        user_data = {"valid": True, "user_id": "u1", "email": "a@b.com"}
+        client.redis.get = AsyncMock(return_value=json.dumps(user_data))
+
+        result = await client.validate("tok1")
+        assert result == user_data
+        client.redis.get.assert_called_once_with("iam:tok1")
+
+
+@pytest.mark.asyncio
+async def test_iam_validate_cache_miss_remote_ok():
+    """Cache miss → remote call → caches and returns data."""
+    with patch("iam.client.redis") as mock_redis_mod, \
+         patch("iam.client.httpx") as mock_httpx:
+        mock_redis = AsyncMock()
+        mock_redis_mod.from_url.return_value = mock_redis
+        mock_http = AsyncMock()
+        mock_httpx.AsyncClient.return_value = mock_http
+
+        from iam.client import IAMClient
+        client = IAMClient(base_url="http://auth:8001", redis_url="redis://localhost")
+        client.redis.get = AsyncMock(return_value=None)
+        client.redis.setex = AsyncMock()
+
+        mock_resp = MagicMock()
+        mock_resp.status_code = 200
+        mock_resp.json.return_value = {"valid": True, "user_id": "u2", "email": "b@c.com"}
+        client.http.post = AsyncMock(return_value=mock_resp)
+
+        result = await client.validate("tok2")
+        assert result["user_id"] == "u2"
+        client.redis.setex.assert_called_once()
+        args = client.redis.setex.call_args[0]
+        assert args[0] == "iam:tok2"
+        assert args[1] == 300
+
+
+@pytest.mark.asyncio
+async def test_iam_validate_cache_miss_remote_invalid():
+    """Cache miss → remote returns valid:false → returns None."""
+    with patch("iam.client.redis") as mock_redis_mod, \
+         patch("iam.client.httpx") as mock_httpx:
+        mock_redis = AsyncMock()
+        mock_redis_mod.from_url.return_value = mock_redis
+        mock_httpx.AsyncClient.return_value = AsyncMock()
+
+        from iam.client import IAMClient
+        client = IAMClient(base_url="http://auth:8001", redis_url="redis://localhost")
+        client.redis.get = AsyncMock(return_value=None)
+        mock_resp = MagicMock()
+        mock_resp.status_code = 200
+        mock_resp.json.return_value = {"valid": False}
+        client.http.post = AsyncMock(return_value=mock_resp)
+
+        result = await client.validate("bad-tok")
+        assert result is None
+
+
+@pytest.mark.asyncio
+async def test_iam_validate_cache_miss_remote_error():
+    """Cache miss → remote returns non-200 → returns None."""
+    with patch("iam.client.redis") as mock_redis_mod, \
+         patch("iam.client.httpx") as mock_httpx:
+        mock_redis = AsyncMock()
+        mock_redis_mod.from_url.return_value = mock_redis
+        mock_httpx.AsyncClient.return_value = AsyncMock()
+
+        from iam.client import IAMClient
+        client = IAMClient(base_url="http://auth:8001", redis_url="redis://localhost")
+        client.redis.get = AsyncMock(return_value=None)
+        mock_resp = MagicMock()
+        mock_resp.status_code = 401
+        client.http.post = AsyncMock(return_value=mock_resp)
+
+        result = await client.validate("unauth-tok")
+        assert result is None
