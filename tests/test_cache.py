@@ -104,6 +104,61 @@ async def test_validate_does_not_cache_invalid(iam_client_setup):
 
 
 # ---------------------------------------------------------------------------
+# Phase 1 PR3: org context (org_id/org_role/schema_version). IAMClient.validate
+# returns whatever dict it got from cache/remote as-is -- no field
+# reconstruction like omnibioai-api-gateway's or omnibioai-iam-client's own
+# IAMClient do -- so it's already forward-compatible with both old
+# (pre-PR3) and new (with org context) shapes by construction. These tests
+# prove that, rather than adding unneeded normalization code to an
+# already-correct pass-through.
+# ---------------------------------------------------------------------------
+
+
+@pytest.mark.asyncio
+async def test_validate_remote_passes_through_org_context(iam_client_setup):
+    client, mock_redis, mock_http = iam_client_setup
+    mock_redis.get = AsyncMock(return_value=None)
+    mock_redis.setex = AsyncMock()
+    user_data = {
+        "valid": True,
+        "user_id": "u4",
+        "email": "u4@t.com",
+        "org_id": 7,
+        "org_role": ["org_admin"],
+        "schema_version": 2,
+    }
+    mock_response = MagicMock(status_code=200, json=lambda: user_data)
+    mock_http.post = AsyncMock(return_value=mock_response)
+
+    result = await client.validate("org-context-token")
+
+    assert result["org_id"] == 7
+    assert result["org_role"] == ["org_admin"]
+    assert result["schema_version"] == 2
+
+
+@pytest.mark.asyncio
+async def test_validate_cache_hit_with_pre_pr3_shaped_entry(iam_client_setup):
+    """Redis mixed-version cache compatibility: a cache entry written
+    before org context existed (no org_id/org_role/schema_version keys at
+    all) must still be returned successfully -- the actual scenario during
+    a rolling deploy, where old and new writers' cache entries coexist in
+    the same Redis for up to the 300s TTL."""
+    client, mock_redis, mock_http = iam_client_setup
+    pre_pr3_entry = {"user_id": "u1", "email": "u1@test.com", "valid": True}
+    mock_redis.get = AsyncMock(return_value=json.dumps(pre_pr3_entry))
+
+    result = await client.validate("test-token")
+
+    assert result == pre_pr3_entry
+    mock_http.post.assert_not_called()
+    # No org_id key at all -- callers must use .get("org_id") with a
+    # default, exactly as omnibioai-api-gateway's and omnibioai-iam-client's
+    # updated clients now do.
+    assert "org_id" not in result
+
+
+# ---------------------------------------------------------------------------
 # audit/client.py — AuditClient
 # ---------------------------------------------------------------------------
 
