@@ -70,36 +70,52 @@ pip install omnibioai-security-sdk
 
 ## Usage
 
-### FastAPI middleware setup
+> **Package layout note:** there is no `omnibioai_security_sdk/` package
+> directory — the repo exposes its modules directly at the root
+> (`iam/`, `policy/`, `audit/`, `core/`, `middleware/`, `auth/`), and
+> `pip install omnibioai-security-sdk`/`-e .` installs them at that
+> top level, importable as e.g. `from iam.client import IAMClient`.
+> **`middleware/auth.py` and `middleware/policy.py` internally import
+> from `omnibioai_security_sdk.*`** (a package that doesn't exist under
+> that name) — this is a real, currently-unresolved issue, not a doc
+> typo: `tests/test_middleware.py`'s own docstring documents working
+> around it by wiring `sys.modules` before import. Until that's fixed,
+> `AuthMiddleware`/`PolicyMiddleware` will raise `ModuleNotFoundError`
+> on a normal import from a consuming service. `middleware/s2s.py` and
+> everything under `iam/`, `policy/`, `audit/` do **not** have this
+> problem — they're plain, working imports.
+
+### IAM + Policy clients (working today)
 
 ```python
 from fastapi import FastAPI
-from omnibioai_security_sdk.core.config import SecurityConfig
-from omnibioai_security_sdk.iam.client import IAMClient
-from omnibioai_security_sdk.policy.client import PolicyClient
-from omnibioai_security_sdk.middleware.auth import AuthMiddleware
-from omnibioai_security_sdk.middleware.policy import PolicyMiddleware
+from iam.client import IAMClient
+from policy.client import PolicyClient
 
 app = FastAPI()
 
-iam = IAMClient(SecurityConfig.IAM_BASE_URL, SecurityConfig.REDIS_URL)
-policy = PolicyClient(SecurityConfig.POLICY_BASE_URL)
+iam = IAMClient(base_url="http://omnibioai-auth:8001", redis_url="redis://redis:6379")
+policy = PolicyClient(base_url="http://omnibioai-policy-engine:8001")
 
-app.add_middleware(AuthMiddleware, iam=iam)
-app.add_middleware(PolicyMiddleware, policy=policy)
+user = await iam.validate(token)
+decision = await policy.evaluate(user, action="GET /api/samples", resource="samples")
 ```
 
-Every request is now automatically:
-- Authenticated (JWT validated via IAM client)
-- Authorized (RBAC/ABAC decision via policy engine)
-- Audited (event fired to Redis Streams)
+(`AuthMiddleware`/`PolicyMiddleware` wrap this same pattern as FastAPI
+middleware — see the package-layout note above before depending on them
+as installed.)
 
 ### Fire an audit event
 
-```python
-from omnibioai_security_sdk.audit.client import fire_audit
+There is no bare `fire_audit()` function — `audit/client.py` exposes an
+`AuditClient` class:
 
-fire_audit({
+```python
+from audit.client import AuditClient
+
+audit = AuditClient(redis_url="redis://redis:6379")
+
+await audit.emit({
     "service": "my-service",
     "event_type": "data_access",
     "user_id": "123",
@@ -109,15 +125,28 @@ fire_audit({
 })
 ```
 
-### S2S token validation
+### S2S request authentication
+
+`middleware/s2s.py` is a FastAPI/Starlette middleware
+(`ServiceAuthMiddleware`), not a standalone client with `generate()`/
+`validate()` methods — it only verifies an incoming `X-Service-Token`
+header against a shared HS256 secret and checks the token's `aud` claim
+names this service:
 
 ```python
-from omnibioai_security_sdk.s2s.client import S2SClient
+from middleware.s2s import ServiceAuthMiddleware
 
-s2s = S2SClient(secret=SecurityConfig.SERVICE_SECRET)
-token = s2s.generate(service="tes", audience="workbench")
-valid = s2s.validate(token, expected_audience="workbench")
+app.add_middleware(
+    ServiceAuthMiddleware,
+    secret=SecurityConfig.SERVICE_SECRET,
+    service_name="workbench",
+)
 ```
+
+A request without a valid `X-Service-Token` (signed by the caller,
+`aud` including `"workbench"`) gets `401`/`403`. Generating that token
+in the first place is the caller's own responsibility — this repo has
+no token-issuance code for S2S tokens today.
 
 ---
 
@@ -138,7 +167,7 @@ valid = s2s.validate(token, expected_audience="workbench")
 cd ~/Desktop/machine/omnibioai-security-sdk
 pytest tests/ -v --cov=.
 
-# 87% coverage
+# 95% coverage (verified 2026-08-07; 72 tests)
 # Covers: IAM client, policy client, cache, middleware, S2S auth
 ```
 
@@ -172,4 +201,4 @@ Apache 2.0
 
 ---
 
-*Part of the [OmniBioAI](https://github.com/man4ish/omnibioai-studio) platform.*
+*Part of the [OmniBioAI](https://github.com/OmniBioAI/omnibioai-studio) platform.*
