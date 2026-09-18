@@ -13,6 +13,8 @@ inline notes on `test_s2s_aud_as_substring_bypasses_check` and
 `test_iam_validate_truthy_string_valid_field_treated_as_valid`. Per the
 test-only mandate for this audit, production code is not modified; these
 tests exist to pin current behavior and make the gap visible to reviewers.
+
+Developer: Manish Kumar <manish@omnibioai.org>
 """
 from __future__ import annotations
 
@@ -33,6 +35,7 @@ from starlette.responses import JSONResponse
 # (same pattern as tests/test_middleware.py)
 # ---------------------------------------------------------------------------
 def _ensure_sdk_namespace():
+    """Register omnibioai_security_sdk.* aliases in sys.modules pointing at the local root packages."""
     if "omnibioai_security_sdk" in sys.modules:
         return
     root_ns = types.ModuleType("omnibioai_security_sdk")
@@ -78,6 +81,9 @@ async def _call_next(request):
 # ===========================================================================
 
 class TestServiceAuthMiddlewareTokenBoundaries:
+    """Exercises ServiceAuthMiddleware against adversarial and malformed JWTs:
+    expired/not-yet-valid claims, alg-confusion, audience edge cases, wrong
+    signing keys, oversized tokens, and duplicate headers."""
 
     def _middleware(self, secret="secret", service_name="svc-a"):
         from starlette.applications import Starlette
@@ -92,10 +98,12 @@ class TestServiceAuthMiddlewareTokenBoundaries:
         return ServiceAuthMiddleware(app, secret=secret, service_name=service_name)
 
     def _jwt(self, payload, secret="secret"):
+        """Forge a service JWT with the given claims/signing secret for boundary testing."""
         return jwt.encode(payload, secret, algorithm="HS256")
 
     @pytest.mark.asyncio
     async def test_expired_token_returns_401(self):
+        """A token whose `exp` claim is in the past is rejected with 401."""
         import time
         tok = self._jwt({"service": "caller", "aud": ["svc-a"], "exp": int(time.time()) - 100})
         mw = self._middleware()
@@ -106,6 +114,7 @@ class TestServiceAuthMiddlewareTokenBoundaries:
 
     @pytest.mark.asyncio
     async def test_not_yet_valid_nbf_token_returns_401(self):
+        """A token whose `nbf` claim is in the future is rejected with 401."""
         import time
         tok = self._jwt({"service": "caller", "aud": ["svc-a"], "nbf": int(time.time()) + 1000})
         mw = self._middleware()
@@ -128,6 +137,7 @@ class TestServiceAuthMiddlewareTokenBoundaries:
 
     @pytest.mark.asyncio
     async def test_empty_audience_list_denied(self):
+        """A validly signed token with an empty `aud` list is denied (403), not treated as universally scoped."""
         tok = self._jwt({"service": "caller", "aud": []})
         mw = self._middleware(service_name="svc-a")
         request = Request(_make_scope(headers={"x-service-token": tok}))
@@ -153,6 +163,7 @@ class TestServiceAuthMiddlewareTokenBoundaries:
 
     @pytest.mark.asyncio
     async def test_wrong_signing_key_returns_401(self):
+        """A token signed with a key the middleware doesn't expect fails verification and is rejected with 401."""
         tok = self._jwt({"service": "caller", "aud": ["svc-a"]}, secret="attacker-key")
         mw = self._middleware(secret="real-secret")
         request = Request(_make_scope(headers={"x-service-token": tok}))
@@ -161,6 +172,7 @@ class TestServiceAuthMiddlewareTokenBoundaries:
 
     @pytest.mark.asyncio
     async def test_unicode_service_name_round_trips(self):
+        """Non-ASCII service names in both `service` and `aud` claims are preserved through verification."""
         tok = self._jwt({"service": "调用者", "aud": ["svc-ünïcode"]})
         mw = self._middleware(service_name="svc-ünïcode")
         request = Request(_make_scope(headers={"x-service-token": tok}))
@@ -176,6 +188,7 @@ class TestServiceAuthMiddlewareTokenBoundaries:
 
     @pytest.mark.asyncio
     async def test_oversized_token_returns_401_not_crash(self):
+        """A 100KB garbage token value is rejected with a clean 401 rather than an unhandled error."""
         garbage = "a" * 100_000
         mw = self._middleware()
         request = Request(_make_scope(headers={"x-service-token": garbage}))
@@ -184,6 +197,7 @@ class TestServiceAuthMiddlewareTokenBoundaries:
 
     @pytest.mark.asyncio
     async def test_duplicate_service_token_headers_uses_first(self):
+        """When X-Service-Token is repeated, only the first value is verified."""
         good = self._jwt({"service": "caller", "aud": ["svc-a"]})
         bad = "not-a-jwt"
         raw = [(b"x-service-token", good.encode()), (b"x-service-token", bad.encode())]
@@ -199,6 +213,8 @@ class TestServiceAuthMiddlewareTokenBoundaries:
 # ===========================================================================
 
 class TestAuthMiddlewareHeaderBoundaries:
+    """Exercises AuthMiddleware against malformed, missing, duplicated, and
+    wrong-scheme Authorization headers, plus unhandled IAM-lookup failures."""
 
     def _middleware(self, iam=None):
         from starlette.applications import Starlette
@@ -214,6 +230,7 @@ class TestAuthMiddlewareHeaderBoundaries:
 
     @pytest.mark.asyncio
     async def test_empty_string_header_treated_as_missing(self):
+        """An empty-string Authorization header is treated the same as no header at all (401)."""
         mw = self._middleware()
         request = Request(_make_scope(headers={"authorization": ""}))
         resp = await mw.dispatch(request, _call_next)
@@ -258,6 +275,7 @@ class TestAuthMiddlewareHeaderBoundaries:
 
     @pytest.mark.asyncio
     async def test_duplicate_authorization_headers_uses_first(self):
+        """When Authorization is repeated, only the first value is sent to validate()."""
         iam = MagicMock()
         iam.validate = AsyncMock(return_value={"user_id": "u1"})
         mw = self._middleware(iam)
@@ -289,6 +307,8 @@ class TestAuthMiddlewareHeaderBoundaries:
 # ===========================================================================
 
 class TestPolicyMiddlewareMalformedDecisions:
+    """Exercises PolicyMiddleware against malformed and exception-raising
+    policy-engine decisions to confirm the fail-closed boundary and its gaps."""
 
     def _middleware(self, policy=None):
         from starlette.applications import Starlette
@@ -333,6 +353,7 @@ class TestPolicyMiddlewareMalformedDecisions:
 
     @pytest.mark.asyncio
     async def test_policy_evaluate_exception_propagates(self):
+        """An exception raised out of PolicyClient.evaluate() (e.g. a timeout) propagates unhandled, not fail-open."""
         policy = MagicMock()
         policy.evaluate = AsyncMock(side_effect=TimeoutError("policy engine timeout"))
         mw = self._middleware(policy)
@@ -347,8 +368,12 @@ class TestPolicyMiddlewareMalformedDecisions:
 # ===========================================================================
 
 class TestIAMClientFailureModes:
+    """Exercises IAMClient.validate() against corrupted cache entries,
+    upstream connectivity failures, and truthiness/type confusion in the
+    remote "valid" field."""
 
     async def _client(self):
+        """Construct an IAMClient with redis/httpx patched out, for direct manipulation of its mocked calls."""
         with patch("iam.client.redis") as mock_redis_mod, \
              patch("iam.client.httpx") as mock_httpx:
             mock_redis = AsyncMock()
@@ -371,6 +396,7 @@ class TestIAMClientFailureModes:
 
     @pytest.mark.asyncio
     async def test_redis_get_exception_propagates(self):
+        """A Redis connectivity failure during the cache lookup propagates unhandled, not fail-open."""
         client, mock_redis, _ = await self._client()
         mock_redis.get = AsyncMock(side_effect=ConnectionError("redis down"))
         with pytest.raises(ConnectionError):
@@ -378,6 +404,7 @@ class TestIAMClientFailureModes:
 
     @pytest.mark.asyncio
     async def test_http_post_timeout_propagates(self):
+        """A timeout calling the remote IAM service propagates unhandled, not fail-open."""
         client, mock_redis, mock_http = await self._client()
         mock_redis.get = AsyncMock(return_value=None)
         mock_http.post = AsyncMock(side_effect=TimeoutError("iam service timeout"))
@@ -429,9 +456,12 @@ class TestIAMClientFailureModes:
 # ===========================================================================
 
 class TestPolicyClientMalformedResponses:
+    """Exercises PolicyClient.evaluate() against non-JSON, non-dict, and
+    network-failure responses from the policy engine."""
 
     @pytest.mark.asyncio
     async def test_non_json_response_propagates(self):
+        """A response body that fails JSON decoding propagates the underlying ValueError unhandled."""
         with patch("policy.client.httpx") as mock_httpx:
             mock_http = AsyncMock()
             mock_httpx.AsyncClient.return_value = mock_http
@@ -461,6 +491,7 @@ class TestPolicyClientMalformedResponses:
 
     @pytest.mark.asyncio
     async def test_http_post_network_failure_propagates(self):
+        """A network failure calling the policy engine propagates unhandled, not fail-open."""
         with patch("policy.client.httpx") as mock_httpx:
             mock_http = AsyncMock()
             mock_httpx.AsyncClient.return_value = mock_http
@@ -476,9 +507,12 @@ class TestPolicyClientMalformedResponses:
 # ===========================================================================
 
 class TestAuditClientSerializationBoundary:
+    """Exercises AuditClient.emit() against non-JSON-serializable event
+    payloads and Redis stream-write failures."""
 
     @pytest.mark.asyncio
     async def test_non_serializable_event_raises_typeerror(self):
+        """An event containing a non-JSON-serializable value raises TypeError instead of silently dropping data."""
         mock_redis = AsyncMock()
         with patch("audit.client.redis") as mock_redis_module:
             mock_redis_module.from_url.return_value = mock_redis
@@ -494,6 +528,7 @@ class TestAuditClientSerializationBoundary:
 
     @pytest.mark.asyncio
     async def test_redis_xadd_failure_propagates(self):
+        """A Redis XADD failure while emitting an audit event propagates unhandled, not silently dropped."""
         mock_redis = AsyncMock()
         mock_redis.xadd = AsyncMock(side_effect=ConnectionError("redis unreachable"))
         with patch("audit.client.redis") as mock_redis_module:
@@ -511,6 +546,8 @@ class TestAuditClientSerializationBoundary:
 # ===========================================================================
 
 class TestSecurityConfigEnvironmentHandling:
+    """Exercises SecurityConfig's environment-variable-driven configuration,
+    including that clearing overrides restores the documented defaults."""
 
     def test_env_overrides_are_picked_up_on_import(self, monkeypatch):
         """SecurityConfig reads os.getenv at class-definition time, so an

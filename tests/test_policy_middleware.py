@@ -1,4 +1,7 @@
-"""TestClient-based integration tests for middleware/policy.py PolicyMiddleware."""
+"""TestClient-based integration tests for middleware/policy.py PolicyMiddleware.
+
+Developer: Manish Kumar <manish@omnibioai.org>
+"""
 import sys
 import types
 import importlib
@@ -43,6 +46,7 @@ def _make_app(policy_client):
 
 
 def test_policy_middleware_allows():
+    """An allow=True policy decision lets the request reach the endpoint with a 200."""
     mock_policy = MagicMock()
     mock_policy.evaluate = AsyncMock(return_value={"allow": True, "reason": "ok"})
     app = _make_app(mock_policy)
@@ -53,6 +57,7 @@ def test_policy_middleware_allows():
 
 
 def test_policy_middleware_denies():
+    """An allow=False policy decision returns 403 with the denial reason in the body."""
     mock_policy = MagicMock()
     mock_policy.evaluate = AsyncMock(return_value={"allow": False, "reason": "forbidden"})
     app = _make_app(mock_policy)

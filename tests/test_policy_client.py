@@ -1,5 +1,7 @@
 """
 Tests for policy/client.py — PolicyClient.evaluate()
+
+Developer: Manish Kumar <manish@omnibioai.org>
 """
 import pytest
 from unittest.mock import AsyncMock, MagicMock
@@ -11,6 +13,7 @@ from unittest.mock import AsyncMock, MagicMock
 
 @pytest.mark.asyncio
 async def test_evaluate_allow_decision(policy_client_setup):
+    """evaluate() surfaces an allow=True decision with its reason intact."""
     client, mock_http = policy_client_setup
     mock_http.post = AsyncMock(return_value=MagicMock(
         json=lambda: {"allow": True, "reason": "access granted"}
@@ -28,6 +31,7 @@ async def test_evaluate_allow_decision(policy_client_setup):
 
 @pytest.mark.asyncio
 async def test_evaluate_deny_decision(policy_client_setup):
+    """evaluate() surfaces an allow=False decision with its reason intact."""
     client, mock_http = policy_client_setup
     mock_http.post = AsyncMock(return_value=MagicMock(
         json=lambda: {"allow": False, "reason": "forbidden"}
@@ -45,6 +49,7 @@ async def test_evaluate_deny_decision(policy_client_setup):
 
 @pytest.mark.asyncio
 async def test_evaluate_posts_to_correct_url(policy_client_setup):
+    """evaluate() posts to the client's configured base_url + /evaluate."""
     client, mock_http = policy_client_setup
     mock_response = MagicMock(json=lambda: {"allow": True})
     mock_http.post = AsyncMock(return_value=mock_response)
@@ -57,6 +62,7 @@ async def test_evaluate_posts_to_correct_url(policy_client_setup):
 
 @pytest.mark.asyncio
 async def test_evaluate_sends_user_path_method(policy_client_setup):
+    """evaluate() includes the user, path, and method fields in the request JSON."""
     client, mock_http = policy_client_setup
     mock_response = MagicMock(json=lambda: {"allow": True})
     mock_http.post = AsyncMock(return_value=mock_response)
@@ -72,6 +78,7 @@ async def test_evaluate_sends_user_path_method(policy_client_setup):
 
 @pytest.mark.asyncio
 async def test_evaluate_returns_raw_json(policy_client_setup):
+    """evaluate() returns the policy engine's JSON body unmodified, including extra fields."""
     client, mock_http = policy_client_setup
     payload = {"allow": True, "reason": "ok", "extra": "data"}
     mock_http.post = AsyncMock(return_value=MagicMock(json=lambda: payload))
