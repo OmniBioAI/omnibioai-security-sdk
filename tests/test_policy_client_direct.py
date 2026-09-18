@@ -1,10 +1,14 @@
-"""Direct-instantiation tests for policy/client.py PolicyClient."""
+"""Direct-instantiation tests for policy/client.py PolicyClient.
+
+Developer: Manish Kumar <manish@omnibioai.org>
+"""
 import pytest
 from unittest.mock import AsyncMock, MagicMock, patch
 
 
 @pytest.mark.asyncio
 async def test_policy_evaluate_allow():
+    """PolicyClient.evaluate() returns allow=True when the policy engine grants access."""
     with patch("policy.client.httpx") as mock_httpx:
         mock_http = AsyncMock()
         mock_httpx.AsyncClient.return_value = mock_http
@@ -25,6 +29,7 @@ async def test_policy_evaluate_allow():
 
 @pytest.mark.asyncio
 async def test_policy_evaluate_deny():
+    """PolicyClient.evaluate() returns allow=False when the policy engine denies access."""
     with patch("policy.client.httpx") as mock_httpx:
         mock_http = AsyncMock()
         mock_httpx.AsyncClient.return_value = mock_http
@@ -45,6 +50,7 @@ async def test_policy_evaluate_deny():
 
 @pytest.mark.asyncio
 async def test_policy_evaluate_posts_correct_payload():
+    """PolicyClient.evaluate() posts to the /evaluate endpoint with path and method in the JSON body."""
     with patch("policy.client.httpx") as mock_httpx:
         mock_http = AsyncMock()
         mock_httpx.AsyncClient.return_value = mock_http

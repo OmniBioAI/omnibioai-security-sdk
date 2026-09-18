@@ -1,5 +1,7 @@
 """
 Tests for policy/decorator.py (currently an empty stub) and exceptions.py.
+
+Developer: Manish Kumar <manish@omnibioai.org>
 """
 import pytest
 from exceptions import SecurityException, Unauthorized, Forbidden
@@ -10,6 +12,7 @@ from exceptions import SecurityException, Unauthorized, Forbidden
 # ---------------------------------------------------------------------------
 
 def test_decorator_module_importable():
+    """policy.decorator (an empty stub) must import without error."""
     import policy.decorator as dec_mod
     assert dec_mod is not None
 
@@ -19,12 +22,14 @@ def test_decorator_module_importable():
 # ---------------------------------------------------------------------------
 
 def test_security_exception_is_exception():
+    """SecurityException is a plain Exception subclass that preserves its message."""
     err = SecurityException("base")
     assert isinstance(err, Exception)
     assert str(err) == "base"
 
 
 def test_unauthorized_inherits_security_exception():
+    """Unauthorized is a SecurityException, so callers can catch it generically."""
     err = Unauthorized("no token")
     assert isinstance(err, SecurityException)
     assert isinstance(err, Exception)
@@ -32,6 +37,7 @@ def test_unauthorized_inherits_security_exception():
 
 
 def test_forbidden_inherits_security_exception():
+    """Forbidden is a SecurityException, so callers can catch it generically."""
     err = Forbidden("access denied")
     assert isinstance(err, SecurityException)
     assert isinstance(err, Exception)
@@ -39,28 +45,33 @@ def test_forbidden_inherits_security_exception():
 
 
 def test_raise_and_catch_unauthorized():
+    """Unauthorized can be raised and caught with its message intact."""
     with pytest.raises(Unauthorized) as exc_info:
         raise Unauthorized("missing bearer token")
     assert "missing bearer token" in str(exc_info.value)
 
 
 def test_raise_and_catch_forbidden():
+    """Forbidden can be raised and caught with its message intact."""
     with pytest.raises(Forbidden) as exc_info:
         raise Forbidden("insufficient permissions")
     assert "insufficient permissions" in str(exc_info.value)
 
 
 def test_catch_unauthorized_as_security_exception():
+    """A caller catching only SecurityException still catches Unauthorized."""
     with pytest.raises(SecurityException):
         raise Unauthorized("bad token")
 
 
 def test_catch_forbidden_as_security_exception():
+    """A caller catching only SecurityException still catches Forbidden."""
     with pytest.raises(SecurityException):
         raise Forbidden("not allowed")
 
 
 def test_unauthorized_and_forbidden_are_distinct():
+    """Unauthorized and Forbidden are siblings, not interchangeable via inheritance."""
     # Neither should be a subclass of the other
     assert not issubclass(Unauthorized, Forbidden)
     assert not issubclass(Forbidden, Unauthorized)

@@ -1,6 +1,8 @@
 """
 Tests for iam/cache.py (empty stub) and iam/client.py IAMClient cache behavior.
 Also covers core/config.py and core/context.py.
+
+Developer: Manish Kumar <manish@omnibioai.org>
 """
 import json
 import pytest
@@ -12,6 +14,7 @@ from unittest.mock import AsyncMock, MagicMock, patch
 # ---------------------------------------------------------------------------
 
 def test_iam_cache_module_importable():
+    """iam.cache (an empty stub) must import without error."""
     import iam.cache as cache_mod
     assert cache_mod is not None
 
@@ -22,6 +25,7 @@ def test_iam_cache_module_importable():
 
 @pytest.mark.asyncio
 async def test_validate_cache_hit_returns_parsed_data(iam_client_setup):
+    """A Redis cache hit returns the parsed JSON without calling the remote IAM service."""
     client, mock_redis, _ = iam_client_setup
     user_data = {"user_id": "u1", "email": "u1@test.com", "valid": True}
     mock_redis.get = AsyncMock(return_value=json.dumps(user_data))
@@ -34,6 +38,7 @@ async def test_validate_cache_hit_returns_parsed_data(iam_client_setup):
 
 @pytest.mark.asyncio
 async def test_validate_cache_miss_hits_remote(iam_client_setup):
+    """A Redis cache miss falls through to a remote IAM validation call."""
     client, mock_redis, mock_http = iam_client_setup
     mock_redis.get = AsyncMock(return_value=None)
     mock_response = MagicMock()
@@ -50,6 +55,7 @@ async def test_validate_cache_miss_hits_remote(iam_client_setup):
 
 @pytest.mark.asyncio
 async def test_validate_remote_caches_result(iam_client_setup):
+    """A successful remote validation is cached under the expected key with a 300s TTL."""
     client, mock_redis, mock_http = iam_client_setup
     mock_redis.get = AsyncMock(return_value=None)
     mock_redis.setex = AsyncMock()
@@ -68,6 +74,7 @@ async def test_validate_remote_caches_result(iam_client_setup):
 
 @pytest.mark.asyncio
 async def test_validate_non_200_returns_none(iam_client_setup):
+    """A non-200 response from the remote IAM service is treated as invalid, not an error."""
     client, mock_redis, mock_http = iam_client_setup
     mock_redis.get = AsyncMock(return_value=None)
     mock_response = MagicMock(status_code=401)
@@ -80,6 +87,7 @@ async def test_validate_non_200_returns_none(iam_client_setup):
 
 @pytest.mark.asyncio
 async def test_validate_invalid_response_returns_none(iam_client_setup):
+    """A 200 response with valid:false denies validation."""
     client, mock_redis, mock_http = iam_client_setup
     mock_redis.get = AsyncMock(return_value=None)
     mock_response = MagicMock(status_code=200, json=lambda: {"valid": False})
@@ -92,6 +100,7 @@ async def test_validate_invalid_response_returns_none(iam_client_setup):
 
 @pytest.mark.asyncio
 async def test_validate_does_not_cache_invalid(iam_client_setup):
+    """An invalid validation result must not be written to the cache."""
     client, mock_redis, mock_http = iam_client_setup
     mock_redis.get = AsyncMock(return_value=None)
     mock_redis.setex = AsyncMock()
@@ -116,6 +125,7 @@ async def test_validate_does_not_cache_invalid(iam_client_setup):
 
 @pytest.mark.asyncio
 async def test_validate_remote_passes_through_org_context(iam_client_setup):
+    """Org-scoped fields (org_id/org_role/schema_version) from a remote response pass through untouched."""
     client, mock_redis, mock_http = iam_client_setup
     mock_redis.get = AsyncMock(return_value=None)
     mock_redis.setex = AsyncMock()
@@ -164,6 +174,7 @@ async def test_validate_cache_hit_with_pre_pr3_shaped_entry(iam_client_setup):
 
 @pytest.mark.asyncio
 async def test_audit_client_emit_calls_xadd():
+    """AuditClient.emit() writes the event to the Redis stream via XADD."""
     mock_redis = AsyncMock()
     mock_redis.xadd = AsyncMock()
 
@@ -180,6 +191,7 @@ async def test_audit_client_emit_calls_xadd():
 
 @pytest.mark.asyncio
 async def test_audit_client_emits_to_correct_stream():
+    """AuditClient.emit() targets the fixed "audit:events" stream name."""
     mock_redis = AsyncMock()
     mock_redis.xadd = AsyncMock()
 
@@ -197,6 +209,7 @@ async def test_audit_client_emits_to_correct_stream():
 
 @pytest.mark.asyncio
 async def test_audit_client_serializes_event():
+    """AuditClient.emit() JSON-serializes the event dict under the "data" field."""
     mock_redis = AsyncMock()
     mock_redis.xadd = AsyncMock()
 
@@ -218,26 +231,31 @@ async def test_audit_client_serializes_event():
 # ---------------------------------------------------------------------------
 
 def test_security_config_has_iam_url():
+    """SecurityConfig exposes a non-None IAM_BASE_URL."""
     from core.config import SecurityConfig
     assert SecurityConfig.IAM_BASE_URL is not None
 
 
 def test_security_config_has_policy_url():
+    """SecurityConfig exposes a non-None POLICY_BASE_URL."""
     from core.config import SecurityConfig
     assert SecurityConfig.POLICY_BASE_URL is not None
 
 
 def test_security_config_has_redis_url():
+    """SecurityConfig exposes a non-None REDIS_URL."""
     from core.config import SecurityConfig
     assert SecurityConfig.REDIS_URL is not None
 
 
 def test_security_config_has_service_name():
+    """SecurityConfig exposes a non-None SERVICE_NAME."""
     from core.config import SecurityConfig
     assert SecurityConfig.SERVICE_NAME is not None
 
 
 def test_security_config_has_service_secret():
+    """SecurityConfig exposes a non-None SERVICE_SECRET."""
     from core.config import SecurityConfig
     assert SecurityConfig.SERVICE_SECRET is not None
 
@@ -247,6 +265,7 @@ def test_security_config_has_service_secret():
 # ---------------------------------------------------------------------------
 
 def test_set_and_get_user():
+    """set_user()/get_user() round-trip a value through the user contextvar."""
     from core.context import set_user, get_user, user_ctx
     token = user_ctx.set(None)
     try:
@@ -257,6 +276,7 @@ def test_set_and_get_user():
 
 
 def test_user_context_default_is_none():
+    """The user contextvar defaults to None when unset."""
     from core.context import get_user, user_ctx
     token = user_ctx.set(None)
     try:
@@ -266,6 +286,7 @@ def test_user_context_default_is_none():
 
 
 def test_set_and_get_service():
+    """set_service()/get_service() round-trip a value through the service contextvar."""
     from core.context import set_service, get_service, service_ctx
     token = service_ctx.set(None)
     try:
@@ -276,6 +297,7 @@ def test_set_and_get_service():
 
 
 def test_service_context_default_is_none():
+    """The service contextvar defaults to None when unset."""
     from core.context import get_service, service_ctx
     token = service_ctx.set(None)
     try:
@@ -285,6 +307,7 @@ def test_service_context_default_is_none():
 
 
 def test_set_and_get_trace():
+    """set_trace()/get_trace() round-trip a value through the trace contextvar."""
     from core.context import set_trace, get_trace, trace_ctx
     token = trace_ctx.set(None)
     try:
@@ -295,6 +318,7 @@ def test_set_and_get_trace():
 
 
 def test_trace_context_default_is_none():
+    """The trace contextvar defaults to None when unset."""
     from core.context import get_trace, trace_ctx
     token = trace_ctx.set(None)
     try:

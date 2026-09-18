@@ -1,4 +1,7 @@
-"""TestClient-based integration tests for middleware/s2s.py ServiceAuthMiddleware."""
+"""TestClient-based integration tests for middleware/s2s.py ServiceAuthMiddleware.
+
+Developer: Manish Kumar <manish@omnibioai.org>
+"""
 import sys
 import types
 import importlib
@@ -51,6 +54,7 @@ def _token(service="tes", aud=None):
 
 
 def test_s2s_missing_token():
+    """A request with no X-Service-Token header is rejected with 401."""
     client = TestClient(_make_app(), raise_server_exceptions=False)
     resp = client.get("/test")
     assert resp.status_code == 401
@@ -58,6 +62,7 @@ def test_s2s_missing_token():
 
 
 def test_s2s_invalid_token():
+    """A malformed (non-JWT) service token is rejected with 401."""
     client = TestClient(_make_app(), raise_server_exceptions=False)
     resp = client.get("/test", headers={"X-Service-Token": "bad.token"})
     assert resp.status_code == 401
@@ -65,6 +70,7 @@ def test_s2s_invalid_token():
 
 
 def test_s2s_wrong_audience():
+    """A validly signed token whose audience excludes this service is denied with 403."""
     token = _token(aud=["other-service"])
     client = TestClient(_make_app(), raise_server_exceptions=False)
     resp = client.get("/test", headers={"X-Service-Token": token})
@@ -73,6 +79,7 @@ def test_s2s_wrong_audience():
 
 
 def test_s2s_valid_token_passes():
+    """A validly signed token whose audience includes this service is accepted and its caller identity attached."""
     token = _token(service="tes", aud=[SERVICE])
     client = TestClient(_make_app(), raise_server_exceptions=False)
     resp = client.get("/test", headers={"X-Service-Token": token})
