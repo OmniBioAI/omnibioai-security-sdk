@@ -13,7 +13,7 @@ for all OmniBioAI services.
 - **IAM client** — JWT validation with Redis caching (sub-ms fast path)
 - **Policy client** — RBAC/ABAC evaluation via policy-engine
 - **S2S authentication** — signed service tokens with audience validation
-- **Audit integration** — `fire_audit()` helper for Redis Streams logging
+- **Audit integration** — `AuditClient` for Redis Streams logging
 - **FastAPI middleware** — drop-in auth + policy middleware stack
 
 ---
@@ -167,7 +167,8 @@ no token-issuance code for S2S tokens today.
 cd ~/Desktop/machine/omnibioai-security-sdk
 pytest tests/ -v --cov=.
 
-# 95% coverage (verified 2026-08-07; 72 tests)
+# Coverage figures from earlier dated runs are historical snapshots; run the
+# command above to measure the current checkout.
 # Covers: IAM client, policy client, cache, middleware, S2S auth
 ```
 
@@ -189,7 +190,7 @@ pytest tests/ -v --cov=.
 |---------|------|
 | `omnibioai-auth` | JWT issuance — IAM client validates against this |
 | `omnibioai-policy-engine` | RBAC/ABAC decisions — policy client calls this |
-| `omnibioai-security-audit` | Audit event consumer — fire_audit() writes here |
+| `omnibioai-security-audit` | Audit event consumer — `AuditClient` emits events for this stream path |
 | `omnibioai-api-gateway` | Primary consumer of this SDK's middleware stack |
 | `omnibioai-iam-client` | Async variant of the IAM client for high-throughput |
 
