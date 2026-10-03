@@ -43,3 +43,36 @@ jobs:
 
       - name: Test
         run: pytest -q
+
+  package:
+    name: Install & import (Python 3.12)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      # Builds the package (including the Cython extensions declared in
+      # setup.py) the way a consumer's `pip install` does.
+      - name: Install package
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install .
+
+      # Run outside the checkout so modules resolve from site-packages, not
+      # the repository root. middleware.auth and middleware.policy are left
+      # out: they import the not-yet-existing omnibioai_security_sdk package
+      # (see the package layout note in README.md).
+      - name: Import installed modules
+        working-directory: ${{ runner.temp }}
+        run: |
+          python - <<'PY'
+          import importlib
+          for name in ("auth.service", "iam.client", "iam.cache", "policy.client",
+                       "core.config", "core.context", "audit.client", "middleware.s2s"):
+              module = importlib.import_module(name)
+              print(f"ok {name}: {module.__file__}")
+          PY

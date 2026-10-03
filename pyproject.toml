@@ -1,3 +1,9 @@
+[build-system]
+# setup.py imports Cython to compile selected modules, so it must be
+# available in pip's isolated build environment.
+requires = ["setuptools>=68", "wheel", "Cython>=3"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "omnibioai-security-sdk"
 version = "0.1.0"
