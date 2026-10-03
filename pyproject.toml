@@ -10,3 +10,12 @@ dependencies = [
     "pyjwt",
     "starlette"
 ]
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+
+[tool.ruff.lint]
+# pyflakes + pycodestyle errors only; the explicit selection keeps CI stable
+# when a new ruff release changes its default rule set.
+select = ["E", "F"]

@@ -6,7 +6,6 @@ import sys
 import types
 import importlib
 import jwt
-import pytest
 from starlette.testclient import TestClient
 from starlette.applications import Starlette
 from starlette.responses import JSONResponse

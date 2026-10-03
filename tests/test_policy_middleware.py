@@ -5,7 +5,6 @@ Developer: Manish Kumar <manish@omnibioai.org>
 import sys
 import types
 import importlib
-import pytest
 from unittest.mock import AsyncMock, MagicMock, patch
 from starlette.testclient import TestClient
 from starlette.applications import Starlette
