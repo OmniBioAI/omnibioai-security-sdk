@@ -6,7 +6,6 @@ module-level behaviour and provide placeholders for future logic.
 
 Developer: Manish Kumar <manish@omnibioai.org>
 """
-import pytest
 
 
 def test_auth_service_module_importable():
