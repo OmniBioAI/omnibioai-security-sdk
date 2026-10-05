@@ -1,3 +1,13 @@
+"""
+OmniBioAI core.config.
+
+Purpose:
+    Defines the SecurityConfig class for core.config.
+
+Author:
+    Manish Kumar <manish@omnibioai.org>
+"""
+
 import os
 
 

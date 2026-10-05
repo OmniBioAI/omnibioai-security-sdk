@@ -1,3 +1,13 @@
+"""
+OmniBioAI middleware.s2s.
+
+Purpose:
+    Defines ServiceAuthMiddleware HTTP request middleware.
+
+Author:
+    Manish Kumar <manish@omnibioai.org>
+"""
+
 import jwt
 from starlette.middleware.base import BaseHTTPMiddleware
 from starlette.responses import JSONResponse

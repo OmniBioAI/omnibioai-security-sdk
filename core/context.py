@@ -1,3 +1,13 @@
+"""
+OmniBioAI core.context.
+
+Purpose:
+    Defines set_user, get_user, set_service and get_service for core.context.
+
+Author:
+    Manish Kumar <manish@omnibioai.org>
+"""
+
 from contextvars import ContextVar
 
 user_ctx = ContextVar("user", default=None)

@@ -1,3 +1,13 @@
+"""
+OmniBioAI policy.client.
+
+Purpose:
+    Defines PolicyClient with evaluate methods for policy.client.
+
+Author:
+    Manish Kumar <manish@omnibioai.org>
+"""
+
 import httpx
 
 

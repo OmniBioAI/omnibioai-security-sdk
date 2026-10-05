@@ -1,3 +1,13 @@
+"""
+OmniBioAI audit.client.
+
+Purpose:
+    Defines AuditClient with emit methods for audit.client.
+
+Author:
+    Manish Kumar <manish@omnibioai.org>
+"""
+
 import json
 import redis.asyncio as redis
 

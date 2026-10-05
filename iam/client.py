@@ -1,3 +1,13 @@
+"""
+OmniBioAI iam.client.
+
+Purpose:
+    Defines IAMClient with validate methods for iam.client.
+
+Author:
+    Manish Kumar <manish@omnibioai.org>
+"""
+
 import httpx
 import json
 import redis.asyncio as redis
