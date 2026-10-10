@@ -1524,7 +1524,7 @@ static const char* const __pyx_f[] = {
 /*--- Type declarations ---*/
 struct __pyx_obj_10middleware_3s2s___pyx_scope_struct__dispatch;
 
-/* "middleware/s2s.py":13
+/* "middleware/s2s.py":23
  *         self.service_name = service_name
  * 
  *     async def dispatch(self, request, call_next):             # <<<<<<<<<<<<<<
@@ -2541,6 +2541,7 @@ int __pyx_module_is_main_middleware__s2s = 0;
 /* #### Code section: global_var ### */
 static PyObject *__pyx_builtin_super;
 /* #### Code section: string_decls ### */
+static const char __pyx_k_OmniBioAI_middleware_s2s_Purpos[] = "\nOmniBioAI middleware.s2s.\n\nPurpose:\n    Defines ServiceAuthMiddleware HTTP request middleware.\n\nAuthor:\n    Manish Kumar <manish@omnibioai.org>\n";
 /* #### Code section: decls ### */
 static PyObject *__pyx_pf_10middleware_3s2s_21ServiceAuthMiddleware___init__(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_app, PyObject *__pyx_v_secret, PyObject *__pyx_v_service_name); /* proto */
 static PyObject *__pyx_pf_10middleware_3s2s_21ServiceAuthMiddleware_2dispatch(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_self, PyObject *__pyx_v_request, PyObject *__pyx_v_call_next); /* proto */
@@ -2571,7 +2572,7 @@ typedef struct {
   __Pyx_CachedCFunction __pyx_umethod_PyDict_Type_pop;
   __Pyx_CachedCFunction __pyx_umethod_PyDict_Type_values;
   PyObject *__pyx_codeobj_tab[2];
-  PyObject *__pyx_string_tab[70];
+  PyObject *__pyx_string_tab[72];
   PyObject *__pyx_number_tab[2];
 /* #### Code section: module_state_contents ### */
 /* CommonTypesMetaclass.module_state_decls */
@@ -2678,30 +2679,32 @@ static __pyx_mstatetype * const __pyx_mstate_global = &__pyx_mstate_global_stati
 #define __pyx_n_u_mro_entries __pyx_string_tab[43]
 #define __pyx_n_u_name __pyx_string_tab[44]
 #define __pyx_n_u_next __pyx_string_tab[45]
-#define __pyx_n_u_payload __pyx_string_tab[46]
-#define __pyx_n_u_pop __pyx_string_tab[47]
-#define __pyx_n_u_prepare __pyx_string_tab[48]
-#define __pyx_n_u_qualname __pyx_string_tab[49]
-#define __pyx_n_u_request __pyx_string_tab[50]
-#define __pyx_n_u_secret __pyx_string_tab[51]
-#define __pyx_n_u_self __pyx_string_tab[52]
-#define __pyx_n_u_send __pyx_string_tab[53]
-#define __pyx_n_u_service __pyx_string_tab[54]
-#define __pyx_n_u_service_name __pyx_string_tab[55]
-#define __pyx_n_u_set_name __pyx_string_tab[56]
-#define __pyx_n_u_setdefault __pyx_string_tab[57]
-#define __pyx_n_u_starlette_middleware_base __pyx_string_tab[58]
-#define __pyx_n_u_starlette_responses __pyx_string_tab[59]
-#define __pyx_n_u_state __pyx_string_tab[60]
-#define __pyx_n_u_str __pyx_string_tab[61]
-#define __pyx_n_u_super __pyx_string_tab[62]
-#define __pyx_n_u_test __pyx_string_tab[63]
-#define __pyx_n_u_throw __pyx_string_tab[64]
-#define __pyx_n_u_token __pyx_string_tab[65]
-#define __pyx_n_u_value __pyx_string_tab[66]
-#define __pyx_n_u_values __pyx_string_tab[67]
-#define __pyx_kp_b_iso88591_7q_Ry_Ja_A __pyx_string_tab[68]
-#define __pyx_kp_b_iso88591__3 __pyx_string_tab[69]
+#define __pyx_n_u_options __pyx_string_tab[46]
+#define __pyx_n_u_payload __pyx_string_tab[47]
+#define __pyx_n_u_pop __pyx_string_tab[48]
+#define __pyx_n_u_prepare __pyx_string_tab[49]
+#define __pyx_n_u_qualname __pyx_string_tab[50]
+#define __pyx_n_u_request __pyx_string_tab[51]
+#define __pyx_n_u_secret __pyx_string_tab[52]
+#define __pyx_n_u_self __pyx_string_tab[53]
+#define __pyx_n_u_send __pyx_string_tab[54]
+#define __pyx_n_u_service __pyx_string_tab[55]
+#define __pyx_n_u_service_name __pyx_string_tab[56]
+#define __pyx_n_u_set_name __pyx_string_tab[57]
+#define __pyx_n_u_setdefault __pyx_string_tab[58]
+#define __pyx_n_u_starlette_middleware_base __pyx_string_tab[59]
+#define __pyx_n_u_starlette_responses __pyx_string_tab[60]
+#define __pyx_n_u_state __pyx_string_tab[61]
+#define __pyx_n_u_str __pyx_string_tab[62]
+#define __pyx_n_u_super __pyx_string_tab[63]
+#define __pyx_n_u_test __pyx_string_tab[64]
+#define __pyx_n_u_throw __pyx_string_tab[65]
+#define __pyx_n_u_token __pyx_string_tab[66]
+#define __pyx_n_u_value __pyx_string_tab[67]
+#define __pyx_n_u_values __pyx_string_tab[68]
+#define __pyx_n_u_verify_aud __pyx_string_tab[69]
+#define __pyx_kp_b_iso88591_7q_Ry_Ja_A __pyx_string_tab[70]
+#define __pyx_kp_b_iso88591__3 __pyx_string_tab[71]
 #define __pyx_int_401 __pyx_number_tab[0]
 #define __pyx_int_403 __pyx_number_tab[1]
 /* #### Code section: module_state_clear ### */
@@ -2721,7 +2724,7 @@ static CYTHON_SMALL_CODE int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_ptype_10middleware_3s2s___pyx_scope_struct__dispatch);
   Py_CLEAR(clear_module_state->__pyx_type_10middleware_3s2s___pyx_scope_struct__dispatch);
   for (int i=0; i<2; ++i) { Py_CLEAR(clear_module_state->__pyx_codeobj_tab[i]); }
-  for (int i=0; i<70; ++i) { Py_CLEAR(clear_module_state->__pyx_string_tab[i]); }
+  for (int i=0; i<72; ++i) { Py_CLEAR(clear_module_state->__pyx_string_tab[i]); }
   for (int i=0; i<2; ++i) { Py_CLEAR(clear_module_state->__pyx_number_tab[i]); }
 /* #### Code section: module_state_clear_contents ### */
 /* CommonTypesMetaclass.module_state_clear */
@@ -2752,7 +2755,7 @@ static CYTHON_SMALL_CODE int __pyx_m_traverse(PyObject *m, visitproc visit, void
   Py_VISIT(traverse_module_state->__pyx_ptype_10middleware_3s2s___pyx_scope_struct__dispatch);
   Py_VISIT(traverse_module_state->__pyx_type_10middleware_3s2s___pyx_scope_struct__dispatch);
   for (int i=0; i<2; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_codeobj_tab[i]); }
-  for (int i=0; i<70; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_string_tab[i]); }
+  for (int i=0; i<72; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_string_tab[i]); }
   for (int i=0; i<2; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_number_tab[i]); }
 /* #### Code section: module_state_traverse_contents ### */
 /* CommonTypesMetaclass.module_state_traverse */
@@ -2771,7 +2774,7 @@ return 0;
 #endif
 /* #### Code section: module_code ### */
 
-/* "middleware/s2s.py":8
+/* "middleware/s2s.py":18
  * class ServiceAuthMiddleware(BaseHTTPMiddleware):
  * 
  *     def __init__(self, app, secret: str, service_name: str):             # <<<<<<<<<<<<<<
@@ -2821,44 +2824,44 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_self,&__pyx_mstate_global->__pyx_n_u_app,&__pyx_mstate_global->__pyx_n_u_secret,&__pyx_mstate_global->__pyx_n_u_service_name,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len < 0)) __PYX_ERR(0, 8, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len < 0)) __PYX_ERR(0, 18, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  4:
         values[3] = __Pyx_ArgRef_FASTCALL(__pyx_args, 3);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 8, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 18, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  3:
         values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 8, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 18, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 8, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 18, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 8, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 18, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "__init__", 0) < (0)) __PYX_ERR(0, 8, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "__init__", 0) < (0)) __PYX_ERR(0, 18, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 4; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("__init__", 1, 4, 4, i); __PYX_ERR(0, 8, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("__init__", 1, 4, 4, i); __PYX_ERR(0, 18, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 4)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 8, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 18, __pyx_L3_error)
       values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 8, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 18, __pyx_L3_error)
       values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 8, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 18, __pyx_L3_error)
       values[3] = __Pyx_ArgRef_FASTCALL(__pyx_args, 3);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 8, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 18, __pyx_L3_error)
     }
     __pyx_v_self = values[0];
     __pyx_v_app = values[1];
@@ -2867,7 +2870,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 1, 4, 4, __pyx_nargs); __PYX_ERR(0, 8, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__init__", 1, 4, 4, __pyx_nargs); __PYX_ERR(0, 18, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -2878,8 +2881,8 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_secret), (&PyUnicode_Type), 0, "secret", 2))) __PYX_ERR(0, 8, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_service_name), (&PyUnicode_Type), 0, "service_name", 2))) __PYX_ERR(0, 8, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_secret), (&PyUnicode_Type), 0, "secret", 2))) __PYX_ERR(0, 18, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_service_name), (&PyUnicode_Type), 0, "service_name", 2))) __PYX_ERR(0, 18, __pyx_L1_error)
   __pyx_r = __pyx_pf_10middleware_3s2s_21ServiceAuthMiddleware___init__(__pyx_self, __pyx_v_self, __pyx_v_app, __pyx_v_secret, __pyx_v_service_name);
 
   /* function exit code */
@@ -2913,7 +2916,7 @@ static PyObject *__pyx_pf_10middleware_3s2s_21ServiceAuthMiddleware___init__(CYT
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "middleware/s2s.py":9
+  /* "middleware/s2s.py":19
  * 
  *     def __init__(self, app, secret: str, service_name: str):
  *         super().__init__(app)             # <<<<<<<<<<<<<<
@@ -2922,7 +2925,7 @@ static PyObject *__pyx_pf_10middleware_3s2s_21ServiceAuthMiddleware___init__(CYT
 */
   __pyx_t_4 = NULL;
   __pyx_t_5 = __Pyx_CyFunction_GetClassObj(__pyx_self);
-  if (!__pyx_t_5) { PyErr_SetString(PyExc_RuntimeError, "super(): empty __class__ cell"); __PYX_ERR(0, 9, __pyx_L1_error) }
+  if (!__pyx_t_5) { PyErr_SetString(PyExc_RuntimeError, "super(): empty __class__ cell"); __PYX_ERR(0, 19, __pyx_L1_error) }
   __Pyx_INCREF(__pyx_t_5);
   __pyx_t_6 = 1;
   {
@@ -2930,7 +2933,7 @@ static PyObject *__pyx_pf_10middleware_3s2s_21ServiceAuthMiddleware___init__(CYT
     __pyx_t_3 = __Pyx_PyObject_FastCall((PyObject*)__pyx_builtin_super, __pyx_callargs+__pyx_t_6, (3-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 9, __pyx_L1_error)
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 19, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
   }
   __pyx_t_2 = __pyx_t_3;
@@ -2941,30 +2944,30 @@ static PyObject *__pyx_pf_10middleware_3s2s_21ServiceAuthMiddleware___init__(CYT
     __pyx_t_1 = __Pyx_PyObject_FastCallMethod((PyObject*)__pyx_mstate_global->__pyx_n_u_init, __pyx_callargs+__pyx_t_6, (2-__pyx_t_6) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 9, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 19, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "middleware/s2s.py":10
+  /* "middleware/s2s.py":20
  *     def __init__(self, app, secret: str, service_name: str):
  *         super().__init__(app)
  *         self.secret = secret             # <<<<<<<<<<<<<<
  *         self.service_name = service_name
  * 
 */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_mstate_global->__pyx_n_u_secret, __pyx_v_secret) < (0)) __PYX_ERR(0, 10, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_mstate_global->__pyx_n_u_secret, __pyx_v_secret) < (0)) __PYX_ERR(0, 20, __pyx_L1_error)
 
-  /* "middleware/s2s.py":11
+  /* "middleware/s2s.py":21
  *         super().__init__(app)
  *         self.secret = secret
  *         self.service_name = service_name             # <<<<<<<<<<<<<<
  * 
  *     async def dispatch(self, request, call_next):
 */
-  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_mstate_global->__pyx_n_u_service_name, __pyx_v_service_name) < (0)) __PYX_ERR(0, 11, __pyx_L1_error)
+  if (__Pyx_PyObject_SetAttrStr(__pyx_v_self, __pyx_mstate_global->__pyx_n_u_service_name, __pyx_v_service_name) < (0)) __PYX_ERR(0, 21, __pyx_L1_error)
 
-  /* "middleware/s2s.py":8
+  /* "middleware/s2s.py":18
  * class ServiceAuthMiddleware(BaseHTTPMiddleware):
  * 
  *     def __init__(self, app, secret: str, service_name: str):             # <<<<<<<<<<<<<<
@@ -2990,7 +2993,7 @@ static PyObject *__pyx_pf_10middleware_3s2s_21ServiceAuthMiddleware___init__(CYT
 }
 static PyObject *__pyx_gb_10middleware_3s2s_21ServiceAuthMiddleware_4generator(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "middleware/s2s.py":13
+/* "middleware/s2s.py":23
  *         self.service_name = service_name
  * 
  *     async def dispatch(self, request, call_next):             # <<<<<<<<<<<<<<
@@ -3039,38 +3042,38 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_self,&__pyx_mstate_global->__pyx_n_u_request,&__pyx_mstate_global->__pyx_n_u_call_next,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len < 0)) __PYX_ERR(0, 13, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len < 0)) __PYX_ERR(0, 23, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  3:
         values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 13, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 23, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 13, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 23, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 13, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 23, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "dispatch", 0) < (0)) __PYX_ERR(0, 13, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "dispatch", 0) < (0)) __PYX_ERR(0, 23, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 3; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("dispatch", 1, 3, 3, i); __PYX_ERR(0, 13, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("dispatch", 1, 3, 3, i); __PYX_ERR(0, 23, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 3)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 13, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 23, __pyx_L3_error)
       values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 13, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 23, __pyx_L3_error)
       values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 13, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 23, __pyx_L3_error)
     }
     __pyx_v_self = values[0];
     __pyx_v_request = values[1];
@@ -3078,7 +3081,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("dispatch", 1, 3, 3, __pyx_nargs); __PYX_ERR(0, 13, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("dispatch", 1, 3, 3, __pyx_nargs); __PYX_ERR(0, 23, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -3111,7 +3114,7 @@ static PyObject *__pyx_pf_10middleware_3s2s_21ServiceAuthMiddleware_2dispatch(CY
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_10middleware_3s2s___pyx_scope_struct__dispatch *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 13, __pyx_L1_error)
+    __PYX_ERR(0, 23, __pyx_L1_error)
   } else {
     __Pyx_GOTREF((PyObject *)__pyx_cur_scope);
   }
@@ -3125,7 +3128,7 @@ static PyObject *__pyx_pf_10middleware_3s2s_21ServiceAuthMiddleware_2dispatch(CY
   __Pyx_INCREF(__pyx_cur_scope->__pyx_v_call_next);
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_call_next);
   {
-    __pyx_CoroutineObject *gen = __Pyx_Coroutine_New((__pyx_coroutine_body_t) __pyx_gb_10middleware_3s2s_21ServiceAuthMiddleware_4generator, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0]), (PyObject *) __pyx_cur_scope, __pyx_mstate_global->__pyx_n_u_dispatch, __pyx_mstate_global->__pyx_n_u_ServiceAuthMiddleware_dispatch, __pyx_mstate_global->__pyx_n_u_middleware_s2s); if (unlikely(!gen)) __PYX_ERR(0, 13, __pyx_L1_error)
+    __pyx_CoroutineObject *gen = __Pyx_Coroutine_New((__pyx_coroutine_body_t) __pyx_gb_10middleware_3s2s_21ServiceAuthMiddleware_4generator, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0]), (PyObject *) __pyx_cur_scope, __pyx_mstate_global->__pyx_n_u_dispatch, __pyx_mstate_global->__pyx_n_u_ServiceAuthMiddleware_dispatch, __pyx_mstate_global->__pyx_n_u_middleware_s2s); if (unlikely(!gen)) __PYX_ERR(0, 23, __pyx_L1_error)
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -3157,8 +3160,8 @@ static PyObject *__pyx_gb_10middleware_3s2s_21ServiceAuthMiddleware_4generator(_
   PyObject *__pyx_t_10 = NULL;
   PyObject *__pyx_t_11 = NULL;
   PyObject *__pyx_t_12 = NULL;
-  int __pyx_t_13;
-  PyObject *__pyx_t_14 = NULL;
+  PyObject *__pyx_t_13 = NULL;
+  int __pyx_t_14;
   __Pyx_PySendResult __pyx_t_15;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
@@ -3175,17 +3178,17 @@ static PyObject *__pyx_gb_10middleware_3s2s_21ServiceAuthMiddleware_4generator(_
   __pyx_L3_first_run:;
   if (unlikely(__pyx_sent_value != Py_None)) {
     if (unlikely(__pyx_sent_value)) PyErr_SetString(PyExc_TypeError, "can't send non-None value to a just-started coroutine");
-    __PYX_ERR(0, 13, __pyx_L1_error)
+    __PYX_ERR(0, 23, __pyx_L1_error)
   }
 
-  /* "middleware/s2s.py":15
+  /* "middleware/s2s.py":25
  *     async def dispatch(self, request, call_next):
  * 
  *         token = request.headers.get("X-Service-Token")             # <<<<<<<<<<<<<<
  * 
  *         if not token:
 */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_request, __pyx_mstate_global->__pyx_n_u_headers); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 15, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_request, __pyx_mstate_global->__pyx_n_u_headers); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 25, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_2 = __pyx_t_3;
   __Pyx_INCREF(__pyx_t_2);
@@ -3195,25 +3198,25 @@ static PyObject *__pyx_gb_10middleware_3s2s_21ServiceAuthMiddleware_4generator(_
     __pyx_t_1 = __Pyx_PyObject_FastCallMethod((PyObject*)__pyx_mstate_global->__pyx_n_u_get, __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 15, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 25, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __Pyx_GIVEREF(__pyx_t_1);
   __pyx_cur_scope->__pyx_v_token = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "middleware/s2s.py":17
+  /* "middleware/s2s.py":27
  *         token = request.headers.get("X-Service-Token")
  * 
  *         if not token:             # <<<<<<<<<<<<<<
  *             return JSONResponse({"error": "missing service token"}, 401)
  * 
 */
-  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_cur_scope->__pyx_v_token); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 17, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_cur_scope->__pyx_v_token); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 27, __pyx_L1_error)
   __pyx_t_6 = (!__pyx_t_5);
   if (__pyx_t_6) {
 
-    /* "middleware/s2s.py":18
+    /* "middleware/s2s.py":28
  * 
  *         if not token:
  *             return JSONResponse({"error": "missing service token"}, 401)             # <<<<<<<<<<<<<<
@@ -3222,11 +3225,11 @@ static PyObject *__pyx_gb_10middleware_3s2s_21ServiceAuthMiddleware_4generator(_
 */
     __Pyx_XDECREF(__pyx_r);
     __pyx_t_3 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_JSONResponse); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 18, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_JSONResponse); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 28, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_7 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 18, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 28, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    if (PyDict_SetItem(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_error, __pyx_mstate_global->__pyx_kp_u_missing_service_token) < (0)) __PYX_ERR(0, 18, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_error, __pyx_mstate_global->__pyx_kp_u_missing_service_token) < (0)) __PYX_ERR(0, 28, __pyx_L1_error)
     __pyx_t_4 = 1;
     #if CYTHON_UNPACK_METHODS
     if (unlikely(PyMethod_Check(__pyx_t_2))) {
@@ -3245,14 +3248,14 @@ static PyObject *__pyx_gb_10middleware_3s2s_21ServiceAuthMiddleware_4generator(_
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 18, __pyx_L1_error)
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 28, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
     }
     __pyx_r = __pyx_t_1;
     __pyx_t_1 = 0;
     goto __pyx_L0;
 
-    /* "middleware/s2s.py":17
+    /* "middleware/s2s.py":27
  *         token = request.headers.get("X-Service-Token")
  * 
  *         if not token:             # <<<<<<<<<<<<<<
@@ -3261,12 +3264,12 @@ static PyObject *__pyx_gb_10middleware_3s2s_21ServiceAuthMiddleware_4generator(_
 */
   }
 
-  /* "middleware/s2s.py":20
+  /* "middleware/s2s.py":30
  *             return JSONResponse({"error": "missing service token"}, 401)
  * 
  *         try:             # <<<<<<<<<<<<<<
- *             payload = jwt.decode(token, self.secret, algorithms=["HS256"])
- *         except Exception:
+ *             # verify_aud=False: audience is checked manually below so PyJWT
+ *             # doesn't reject tokens before we can return the correct 403 status.
 */
   {
     __Pyx_ExceptionSave(&__pyx_t_8, &__pyx_t_9, &__pyx_t_10);
@@ -3275,26 +3278,45 @@ static PyObject *__pyx_gb_10middleware_3s2s_21ServiceAuthMiddleware_4generator(_
     __Pyx_XGOTREF(__pyx_t_10);
     /*try:*/ {
 
-      /* "middleware/s2s.py":21
- * 
- *         try:
- *             payload = jwt.decode(token, self.secret, algorithms=["HS256"])             # <<<<<<<<<<<<<<
- *         except Exception:
- *             return JSONResponse({"error": "invalid service token"}, 401)
+      /* "middleware/s2s.py":33
+ *             # verify_aud=False: audience is checked manually below so PyJWT
+ *             # doesn't reject tokens before we can return the correct 403 status.
+ *             payload = jwt.decode(             # <<<<<<<<<<<<<<
+ *                 token, self.secret, algorithms=["HS256"],
+ *                 options={"verify_aud": False},
 */
       __pyx_t_2 = NULL;
-      __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_jwt); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 21, __pyx_L5_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_jwt); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 33, __pyx_L5_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_decode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 21, __pyx_L5_error)
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_decode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 33, __pyx_L5_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_mstate_global->__pyx_n_u_secret); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 21, __pyx_L5_error)
+
+      /* "middleware/s2s.py":34
+ *             # doesn't reject tokens before we can return the correct 403 status.
+ *             payload = jwt.decode(
+ *                 token, self.secret, algorithms=["HS256"],             # <<<<<<<<<<<<<<
+ *                 options={"verify_aud": False},
+ *             )
+*/
+      __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_mstate_global->__pyx_n_u_secret); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 34, __pyx_L5_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_11 = PyList_New(1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 21, __pyx_L5_error)
+      __pyx_t_11 = PyList_New(1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 34, __pyx_L5_error)
       __Pyx_GOTREF(__pyx_t_11);
       __Pyx_INCREF(__pyx_mstate_global->__pyx_n_u_HS256);
       __Pyx_GIVEREF(__pyx_mstate_global->__pyx_n_u_HS256);
-      if (__Pyx_PyList_SET_ITEM(__pyx_t_11, 0, __pyx_mstate_global->__pyx_n_u_HS256) != (0)) __PYX_ERR(0, 21, __pyx_L5_error);
+      if (__Pyx_PyList_SET_ITEM(__pyx_t_11, 0, __pyx_mstate_global->__pyx_n_u_HS256) != (0)) __PYX_ERR(0, 34, __pyx_L5_error);
+
+      /* "middleware/s2s.py":35
+ *             payload = jwt.decode(
+ *                 token, self.secret, algorithms=["HS256"],
+ *                 options={"verify_aud": False},             # <<<<<<<<<<<<<<
+ *             )
+ *         except Exception:
+*/
+      __pyx_t_12 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 35, __pyx_L5_error)
+      __Pyx_GOTREF(__pyx_t_12);
+      if (PyDict_SetItem(__pyx_t_12, __pyx_mstate_global->__pyx_n_u_verify_aud, Py_False) < (0)) __PYX_ERR(0, 35, __pyx_L5_error)
       __pyx_t_4 = 1;
       #if CYTHON_UNPACK_METHODS
       if (unlikely(PyMethod_Check(__pyx_t_3))) {
@@ -3308,29 +3330,31 @@ static PyObject *__pyx_gb_10middleware_3s2s_21ServiceAuthMiddleware_4generator(_
       }
       #endif
       {
-        PyObject *__pyx_callargs[3 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_2, __pyx_cur_scope->__pyx_v_token, __pyx_t_7};
-        __pyx_t_12 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 21, __pyx_L5_error)
-        __Pyx_GOTREF(__pyx_t_12);
-        if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_algorithms, __pyx_t_11, __pyx_t_12, __pyx_callargs+3, 0) < (0)) __PYX_ERR(0, 21, __pyx_L5_error)
-        __pyx_t_1 = __Pyx_Object_Vectorcall_CallFromBuilder((PyObject*)__pyx_t_3, __pyx_callargs+__pyx_t_4, (3-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_12);
+        PyObject *__pyx_callargs[3 + ((CYTHON_VECTORCALL) ? 2 : 0)] = {__pyx_t_2, __pyx_cur_scope->__pyx_v_token, __pyx_t_7};
+        __pyx_t_13 = __Pyx_MakeVectorcallBuilderKwds(2); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 33, __pyx_L5_error)
+        __Pyx_GOTREF(__pyx_t_13);
+        if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_algorithms, __pyx_t_11, __pyx_t_13, __pyx_callargs+3, 0) < (0)) __PYX_ERR(0, 33, __pyx_L5_error)
+        if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_options, __pyx_t_12, __pyx_t_13, __pyx_callargs+3, 1) < (0)) __PYX_ERR(0, 33, __pyx_L5_error)
+        __pyx_t_1 = __Pyx_Object_Vectorcall_CallFromBuilder((PyObject*)__pyx_t_3, __pyx_callargs+__pyx_t_4, (3-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_13);
         __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
         __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+        __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 21, __pyx_L5_error)
+        if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 33, __pyx_L5_error)
         __Pyx_GOTREF(__pyx_t_1);
       }
       __Pyx_GIVEREF(__pyx_t_1);
       __pyx_cur_scope->__pyx_v_payload = __pyx_t_1;
       __pyx_t_1 = 0;
 
-      /* "middleware/s2s.py":20
+      /* "middleware/s2s.py":30
  *             return JSONResponse({"error": "missing service token"}, 401)
  * 
  *         try:             # <<<<<<<<<<<<<<
- *             payload = jwt.decode(token, self.secret, algorithms=["HS256"])
- *         except Exception:
+ *             # verify_aud=False: audience is checked manually below so PyJWT
+ *             # doesn't reject tokens before we can return the correct 403 status.
 */
     }
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -3341,75 +3365,76 @@ static PyObject *__pyx_gb_10middleware_3s2s_21ServiceAuthMiddleware_4generator(_
     __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
     __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
+    __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-    /* "middleware/s2s.py":22
- *         try:
- *             payload = jwt.decode(token, self.secret, algorithms=["HS256"])
+    /* "middleware/s2s.py":37
+ *                 options={"verify_aud": False},
+ *             )
  *         except Exception:             # <<<<<<<<<<<<<<
  *             return JSONResponse({"error": "invalid service token"}, 401)
  * 
 */
-    __pyx_t_13 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(((PyTypeObject*)PyExc_Exception))));
-    if (__pyx_t_13) {
+    __pyx_t_14 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(((PyTypeObject*)PyExc_Exception))));
+    if (__pyx_t_14) {
       __Pyx_AddTraceback("middleware.s2s.ServiceAuthMiddleware.dispatch", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_1, &__pyx_t_3, &__pyx_t_12) < 0) __PYX_ERR(0, 22, __pyx_L7_except_error)
+      if (__Pyx_GetException(&__pyx_t_1, &__pyx_t_3, &__pyx_t_13) < 0) __PYX_ERR(0, 37, __pyx_L7_except_error)
       __Pyx_XGOTREF(__pyx_t_1);
       __Pyx_XGOTREF(__pyx_t_3);
-      __Pyx_XGOTREF(__pyx_t_12);
+      __Pyx_XGOTREF(__pyx_t_13);
 
-      /* "middleware/s2s.py":23
- *             payload = jwt.decode(token, self.secret, algorithms=["HS256"])
+      /* "middleware/s2s.py":38
+ *             )
  *         except Exception:
  *             return JSONResponse({"error": "invalid service token"}, 401)             # <<<<<<<<<<<<<<
  * 
  *         if self.service_name not in payload.get("aud", []):
 */
       __Pyx_XDECREF(__pyx_r);
-      __pyx_t_7 = NULL;
-      __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_JSONResponse); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 23, __pyx_L7_except_error)
+      __pyx_t_11 = NULL;
+      __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_JSONResponse); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 38, __pyx_L7_except_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 38, __pyx_L7_except_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_14 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 23, __pyx_L7_except_error)
-      __Pyx_GOTREF(__pyx_t_14);
-      if (PyDict_SetItem(__pyx_t_14, __pyx_mstate_global->__pyx_n_u_error, __pyx_mstate_global->__pyx_kp_u_invalid_service_token) < (0)) __PYX_ERR(0, 23, __pyx_L7_except_error)
+      if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_error, __pyx_mstate_global->__pyx_kp_u_invalid_service_token) < (0)) __PYX_ERR(0, 38, __pyx_L7_except_error)
       __pyx_t_4 = 1;
       #if CYTHON_UNPACK_METHODS
-      if (unlikely(PyMethod_Check(__pyx_t_2))) {
-        __pyx_t_7 = PyMethod_GET_SELF(__pyx_t_2);
-        assert(__pyx_t_7);
-        PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_2);
-        __Pyx_INCREF(__pyx_t_7);
+      if (unlikely(PyMethod_Check(__pyx_t_7))) {
+        __pyx_t_11 = PyMethod_GET_SELF(__pyx_t_7);
+        assert(__pyx_t_11);
+        PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_7);
+        __Pyx_INCREF(__pyx_t_11);
         __Pyx_INCREF(__pyx__function);
-        __Pyx_DECREF_SET(__pyx_t_2, __pyx__function);
+        __Pyx_DECREF_SET(__pyx_t_7, __pyx__function);
         __pyx_t_4 = 0;
       }
       #endif
       {
-        PyObject *__pyx_callargs[3] = {__pyx_t_7, __pyx_t_14, __pyx_mstate_global->__pyx_int_401};
-        __pyx_t_11 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_2, __pyx_callargs+__pyx_t_4, (3-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-        __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-        __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
+        PyObject *__pyx_callargs[3] = {__pyx_t_11, __pyx_t_2, __pyx_mstate_global->__pyx_int_401};
+        __pyx_t_12 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_7, __pyx_callargs+__pyx_t_4, (3-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+        __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-        if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 23, __pyx_L7_except_error)
-        __Pyx_GOTREF(__pyx_t_11);
+        __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+        if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 38, __pyx_L7_except_error)
+        __Pyx_GOTREF(__pyx_t_12);
       }
-      __pyx_r = __pyx_t_11;
-      __pyx_t_11 = 0;
+      __pyx_r = __pyx_t_12;
+      __pyx_t_12 = 0;
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+      __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
       goto __pyx_L8_except_return;
     }
     goto __pyx_L7_except_error;
 
-    /* "middleware/s2s.py":20
+    /* "middleware/s2s.py":30
  *             return JSONResponse({"error": "missing service token"}, 401)
  * 
  *         try:             # <<<<<<<<<<<<<<
- *             payload = jwt.decode(token, self.secret, algorithms=["HS256"])
- *         except Exception:
+ *             # verify_aud=False: audience is checked manually below so PyJWT
+ *             # doesn't reject tokens before we can return the correct 403 status.
 */
     __pyx_L7_except_error:;
     __Pyx_XGIVEREF(__pyx_t_8);
@@ -3426,34 +3451,34 @@ static PyObject *__pyx_gb_10middleware_3s2s_21ServiceAuthMiddleware_4generator(_
     __pyx_L10_try_end:;
   }
 
-  /* "middleware/s2s.py":25
+  /* "middleware/s2s.py":40
  *             return JSONResponse({"error": "invalid service token"}, 401)
  * 
  *         if self.service_name not in payload.get("aud", []):             # <<<<<<<<<<<<<<
  *             return JSONResponse({"error": "service not allowed"}, 403)
  * 
 */
-  __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_mstate_global->__pyx_n_u_service_name); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 25, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_12);
+  __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_self, __pyx_mstate_global->__pyx_n_u_service_name); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 40, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_13);
   __pyx_t_1 = __pyx_cur_scope->__pyx_v_payload;
   __Pyx_INCREF(__pyx_t_1);
-  __pyx_t_11 = PyList_New(0); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 25, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_11);
+  __pyx_t_12 = PyList_New(0); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 40, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_12);
   __pyx_t_4 = 0;
   {
-    PyObject *__pyx_callargs[3] = {__pyx_t_1, __pyx_mstate_global->__pyx_n_u_aud, __pyx_t_11};
+    PyObject *__pyx_callargs[3] = {__pyx_t_1, __pyx_mstate_global->__pyx_n_u_aud, __pyx_t_12};
     __pyx_t_3 = __Pyx_PyObject_FastCallMethod((PyObject*)__pyx_mstate_global->__pyx_n_u_get, __pyx_callargs+__pyx_t_4, (3-__pyx_t_4) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 25, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 40, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
   }
-  __pyx_t_6 = (__Pyx_PySequence_ContainsTF(__pyx_t_12, __pyx_t_3, Py_NE)); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 25, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+  __pyx_t_6 = (__Pyx_PySequence_ContainsTF(__pyx_t_13, __pyx_t_3, Py_NE)); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 40, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (__pyx_t_6) {
 
-    /* "middleware/s2s.py":26
+    /* "middleware/s2s.py":41
  * 
  *         if self.service_name not in payload.get("aud", []):
  *             return JSONResponse({"error": "service not allowed"}, 403)             # <<<<<<<<<<<<<<
@@ -3461,38 +3486,38 @@ static PyObject *__pyx_gb_10middleware_3s2s_21ServiceAuthMiddleware_4generator(_
  *         request.state.service = payload["service"]
 */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_12 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_11, __pyx_mstate_global->__pyx_n_u_JSONResponse); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 26, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_11);
-    __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 26, __pyx_L1_error)
+    __pyx_t_13 = NULL;
+    __Pyx_GetModuleGlobalName(__pyx_t_12, __pyx_mstate_global->__pyx_n_u_JSONResponse); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 41, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_12);
+    __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 41, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    if (PyDict_SetItem(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_error, __pyx_mstate_global->__pyx_kp_u_service_not_allowed) < (0)) __PYX_ERR(0, 26, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_error, __pyx_mstate_global->__pyx_kp_u_service_not_allowed) < (0)) __PYX_ERR(0, 41, __pyx_L1_error)
     __pyx_t_4 = 1;
     #if CYTHON_UNPACK_METHODS
-    if (unlikely(PyMethod_Check(__pyx_t_11))) {
-      __pyx_t_12 = PyMethod_GET_SELF(__pyx_t_11);
-      assert(__pyx_t_12);
-      PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_11);
-      __Pyx_INCREF(__pyx_t_12);
+    if (unlikely(PyMethod_Check(__pyx_t_12))) {
+      __pyx_t_13 = PyMethod_GET_SELF(__pyx_t_12);
+      assert(__pyx_t_13);
+      PyObject* __pyx__function = PyMethod_GET_FUNCTION(__pyx_t_12);
+      __Pyx_INCREF(__pyx_t_13);
       __Pyx_INCREF(__pyx__function);
-      __Pyx_DECREF_SET(__pyx_t_11, __pyx__function);
+      __Pyx_DECREF_SET(__pyx_t_12, __pyx__function);
       __pyx_t_4 = 0;
     }
     #endif
     {
-      PyObject *__pyx_callargs[3] = {__pyx_t_12, __pyx_t_1, __pyx_mstate_global->__pyx_int_403};
-      __pyx_t_3 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_11, __pyx_callargs+__pyx_t_4, (3-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
-      __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
+      PyObject *__pyx_callargs[3] = {__pyx_t_13, __pyx_t_1, __pyx_mstate_global->__pyx_int_403};
+      __pyx_t_3 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_12, __pyx_callargs+__pyx_t_4, (3-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+      __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 26, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 41, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
     }
     __pyx_r = __pyx_t_3;
     __pyx_t_3 = 0;
     goto __pyx_L0;
 
-    /* "middleware/s2s.py":25
+    /* "middleware/s2s.py":40
  *             return JSONResponse({"error": "invalid service token"}, 401)
  * 
  *         if self.service_name not in payload.get("aud", []):             # <<<<<<<<<<<<<<
@@ -3501,22 +3526,22 @@ static PyObject *__pyx_gb_10middleware_3s2s_21ServiceAuthMiddleware_4generator(_
 */
   }
 
-  /* "middleware/s2s.py":28
+  /* "middleware/s2s.py":43
  *             return JSONResponse({"error": "service not allowed"}, 403)
  * 
  *         request.state.service = payload["service"]             # <<<<<<<<<<<<<<
  * 
  *         return await call_next(request)
 */
-  __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_cur_scope->__pyx_v_payload, __pyx_mstate_global->__pyx_n_u_service); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 28, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Dict_GetItem(__pyx_cur_scope->__pyx_v_payload, __pyx_mstate_global->__pyx_n_u_service); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 43, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_request, __pyx_mstate_global->__pyx_n_u_state); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 28, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_11);
-  if (__Pyx_PyObject_SetAttrStr(__pyx_t_11, __pyx_mstate_global->__pyx_n_u_service, __pyx_t_3) < (0)) __PYX_ERR(0, 28, __pyx_L1_error)
+  __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_cur_scope->__pyx_v_request, __pyx_mstate_global->__pyx_n_u_state); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_12);
+  if (__Pyx_PyObject_SetAttrStr(__pyx_t_12, __pyx_mstate_global->__pyx_n_u_service, __pyx_t_3) < (0)) __PYX_ERR(0, 43, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
+  __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
 
-  /* "middleware/s2s.py":30
+  /* "middleware/s2s.py":45
  *         request.state.service = payload["service"]
  * 
  *         return await call_next(request)             # <<<<<<<<<<<<<<
@@ -3539,14 +3564,14 @@ static PyObject *__pyx_gb_10middleware_3s2s_21ServiceAuthMiddleware_4generator(_
   #endif
   {
     PyObject *__pyx_callargs[2] = {__pyx_t_3, __pyx_cur_scope->__pyx_v_request};
-    __pyx_t_11 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_1, __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
+    __pyx_t_12 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_1, __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 30, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_11);
+    if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 45, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_12);
   }
-  __pyx_t_15 = __Pyx_Coroutine_Yield_From(__pyx_generator, __pyx_t_11, &__pyx_r);
-  __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
+  __pyx_t_15 = __Pyx_Coroutine_Yield_From(__pyx_generator, __pyx_t_12, &__pyx_r);
+  __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
   if (likely(__pyx_t_15 == PYGEN_NEXT)) {
     __Pyx_GOTREF(__pyx_r);
     __Pyx_XGIVEREF(__pyx_r);
@@ -3556,21 +3581,21 @@ static PyObject *__pyx_gb_10middleware_3s2s_21ServiceAuthMiddleware_4generator(_
     __pyx_generator->resume_label = 1;
     return __pyx_r;
     __pyx_L14_resume_from_await:;
-    if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 30, __pyx_L1_error)
-    __pyx_t_11 = __pyx_sent_value; __Pyx_INCREF(__pyx_t_11);
+    if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 45, __pyx_L1_error)
+    __pyx_t_12 = __pyx_sent_value; __Pyx_INCREF(__pyx_t_12);
   } else if (likely(__pyx_t_15 == PYGEN_RETURN)) {
     __Pyx_GOTREF(__pyx_r);
-    __pyx_t_11 = __pyx_r; __pyx_r = NULL;
+    __pyx_t_12 = __pyx_r; __pyx_r = NULL;
   } else {
     __Pyx_XGOTREF(__pyx_r);
-    __PYX_ERR(0, 30, __pyx_L1_error)
+    __PYX_ERR(0, 45, __pyx_L1_error)
   }
-  __pyx_r = __pyx_t_11;
-  __pyx_t_11 = 0;
+  __pyx_r = __pyx_t_12;
+  __pyx_t_12 = 0;
   goto __pyx_L0;
   CYTHON_MAYBE_UNUSED_VAR(__pyx_cur_scope);
 
-  /* "middleware/s2s.py":13
+  /* "middleware/s2s.py":23
  *         self.service_name = service_name
  * 
  *     async def dispatch(self, request, call_next):             # <<<<<<<<<<<<<<
@@ -3586,7 +3611,7 @@ static PyObject *__pyx_gb_10middleware_3s2s_21ServiceAuthMiddleware_4generator(_
   __Pyx_XDECREF(__pyx_t_7);
   __Pyx_XDECREF(__pyx_t_11);
   __Pyx_XDECREF(__pyx_t_12);
-  __Pyx_XDECREF(__pyx_t_14);
+  __Pyx_XDECREF(__pyx_t_13);
   if (__Pyx_PyErr_Occurred()) {
     __Pyx_Generator_Replace_StopIteration(0);
     __Pyx_AddTraceback("dispatch", __pyx_clineno, __pyx_lineno, __pyx_filename);
@@ -3832,15 +3857,15 @@ static int __Pyx_modinit_type_init_code(__pyx_mstatetype *__pyx_mstate) {
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_init_code", 0);
   /*--- Type init code ---*/
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_mstate->__pyx_ptype_10middleware_3s2s___pyx_scope_struct__dispatch = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_10middleware_3s2s___pyx_scope_struct__dispatch_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_10middleware_3s2s___pyx_scope_struct__dispatch)) __PYX_ERR(0, 13, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_10middleware_3s2s___pyx_scope_struct__dispatch_spec, __pyx_mstate->__pyx_ptype_10middleware_3s2s___pyx_scope_struct__dispatch) < (0)) __PYX_ERR(0, 13, __pyx_L1_error)
+  __pyx_mstate->__pyx_ptype_10middleware_3s2s___pyx_scope_struct__dispatch = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_10middleware_3s2s___pyx_scope_struct__dispatch_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_10middleware_3s2s___pyx_scope_struct__dispatch)) __PYX_ERR(0, 23, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_10middleware_3s2s___pyx_scope_struct__dispatch_spec, __pyx_mstate->__pyx_ptype_10middleware_3s2s___pyx_scope_struct__dispatch) < (0)) __PYX_ERR(0, 23, __pyx_L1_error)
   #else
   __pyx_mstate->__pyx_ptype_10middleware_3s2s___pyx_scope_struct__dispatch = &__pyx_type_10middleware_3s2s___pyx_scope_struct__dispatch;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_10middleware_3s2s___pyx_scope_struct__dispatch) < (0)) __PYX_ERR(0, 13, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_10middleware_3s2s___pyx_scope_struct__dispatch) < (0)) __PYX_ERR(0, 23, __pyx_L1_error)
   #endif
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount((PyObject*)__pyx_mstate->__pyx_ptype_10middleware_3s2s___pyx_scope_struct__dispatch);
@@ -3909,7 +3934,7 @@ namespace {
   {
       PyModuleDef_HEAD_INIT,
       "s2s",
-      0, /* m_doc */
+      __pyx_k_OmniBioAI_middleware_s2s_Purpos, /* m_doc */
     #if CYTHON_USE_MODULE_STATE
       sizeof(__pyx_mstatetype), /* m_size */
     #else
@@ -4156,18 +4181,21 @@ __Pyx_RefNannySetupContext("PyInit_s2s", 0);
   (void)__Pyx_modinit_function_import_code(__pyx_mstate);
   /*--- Execution code ---*/
 
-  /* "middleware/s2s.py":1
+  /* "middleware/s2s.py":11
+ * """
+ * 
  * import jwt             # <<<<<<<<<<<<<<
  * from starlette.middleware.base import BaseHTTPMiddleware
  * from starlette.responses import JSONResponse
 */
-  __pyx_t_1 = __Pyx_Import(__pyx_mstate_global->__pyx_n_u_jwt, 0, 0, NULL, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_Import(__pyx_mstate_global->__pyx_n_u_jwt, 0, 0, NULL, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 11, __pyx_L1_error)
   __pyx_t_2 = __pyx_t_1;
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_jwt, __pyx_t_2) < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_jwt, __pyx_t_2) < (0)) __PYX_ERR(0, 11, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "middleware/s2s.py":2
+  /* "middleware/s2s.py":12
+ * 
  * import jwt
  * from starlette.middleware.base import BaseHTTPMiddleware             # <<<<<<<<<<<<<<
  * from starlette.responses import JSONResponse
@@ -4175,22 +4203,22 @@ __Pyx_RefNannySetupContext("PyInit_s2s", 0);
 */
   {
     PyObject* const __pyx_imported_names[] = {__pyx_mstate_global->__pyx_n_u_BaseHTTPMiddleware};
-    __pyx_t_1 = __Pyx_Import(__pyx_mstate_global->__pyx_n_u_starlette_middleware_base, __pyx_imported_names, 1, NULL, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 2, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_Import(__pyx_mstate_global->__pyx_n_u_starlette_middleware_base, __pyx_imported_names, 1, NULL, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 12, __pyx_L1_error)
   }
   __pyx_t_2 = __pyx_t_1;
   __Pyx_GOTREF(__pyx_t_2);
   {
     PyObject* const __pyx_imported_names[] = {__pyx_mstate_global->__pyx_n_u_BaseHTTPMiddleware};
     __pyx_t_3 = 0; {
-      __pyx_t_4 = __Pyx_ImportFrom(__pyx_t_2, __pyx_imported_names[__pyx_t_3]); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 2, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_ImportFrom(__pyx_t_2, __pyx_imported_names[__pyx_t_3]); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 12, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_imported_names[__pyx_t_3], __pyx_t_4) < (0)) __PYX_ERR(0, 2, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_imported_names[__pyx_t_3], __pyx_t_4) < (0)) __PYX_ERR(0, 12, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "middleware/s2s.py":3
+  /* "middleware/s2s.py":13
  * import jwt
  * from starlette.middleware.base import BaseHTTPMiddleware
  * from starlette.responses import JSONResponse             # <<<<<<<<<<<<<<
@@ -4199,58 +4227,58 @@ __Pyx_RefNannySetupContext("PyInit_s2s", 0);
 */
   {
     PyObject* const __pyx_imported_names[] = {__pyx_mstate_global->__pyx_n_u_JSONResponse};
-    __pyx_t_1 = __Pyx_Import(__pyx_mstate_global->__pyx_n_u_starlette_responses, __pyx_imported_names, 1, NULL, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 3, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_Import(__pyx_mstate_global->__pyx_n_u_starlette_responses, __pyx_imported_names, 1, NULL, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 13, __pyx_L1_error)
   }
   __pyx_t_2 = __pyx_t_1;
   __Pyx_GOTREF(__pyx_t_2);
   {
     PyObject* const __pyx_imported_names[] = {__pyx_mstate_global->__pyx_n_u_JSONResponse};
     __pyx_t_3 = 0; {
-      __pyx_t_4 = __Pyx_ImportFrom(__pyx_t_2, __pyx_imported_names[__pyx_t_3]); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 3, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_ImportFrom(__pyx_t_2, __pyx_imported_names[__pyx_t_3]); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 13, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_imported_names[__pyx_t_3], __pyx_t_4) < (0)) __PYX_ERR(0, 3, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_imported_names[__pyx_t_3], __pyx_t_4) < (0)) __PYX_ERR(0, 13, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "middleware/s2s.py":6
+  /* "middleware/s2s.py":16
  * 
  * 
  * class ServiceAuthMiddleware(BaseHTTPMiddleware):             # <<<<<<<<<<<<<<
  * 
  *     def __init__(self, app, secret: str, service_name: str):
 */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_BaseHTTPMiddleware); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 6, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_BaseHTTPMiddleware); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = PyTuple_Pack(1, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 6, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_Pack(1, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PEP560_update_bases(__pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 6, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PEP560_update_bases(__pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_5 = __Pyx_CalculateMetaclass(NULL, __pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 6, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CalculateMetaclass(NULL, __pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = __Pyx_Py3MetaclassPrepare(__pyx_t_5, __pyx_t_2, __pyx_mstate_global->__pyx_n_u_ServiceAuthMiddleware, __pyx_mstate_global->__pyx_n_u_ServiceAuthMiddleware, (PyObject *) NULL, __pyx_mstate_global->__pyx_n_u_middleware_s2s, (PyObject *) NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 6, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_Py3MetaclassPrepare(__pyx_t_5, __pyx_t_2, __pyx_mstate_global->__pyx_n_u_ServiceAuthMiddleware, __pyx_mstate_global->__pyx_n_u_ServiceAuthMiddleware, (PyObject *) NULL, __pyx_mstate_global->__pyx_n_u_middleware_s2s, (PyObject *) NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   if (__pyx_t_2 != __pyx_t_4) {
-    if (unlikely((PyDict_SetItemString(__pyx_t_6, "__orig_bases__", __pyx_t_4) < 0))) __PYX_ERR(0, 6, __pyx_L1_error)
+    if (unlikely((PyDict_SetItemString(__pyx_t_6, "__orig_bases__", __pyx_t_4) < 0))) __PYX_ERR(0, 16, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 6, __pyx_L1_error)
+  __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
 
-  /* "middleware/s2s.py":8
+  /* "middleware/s2s.py":18
  * class ServiceAuthMiddleware(BaseHTTPMiddleware):
  * 
  *     def __init__(self, app, secret: str, service_name: str):             # <<<<<<<<<<<<<<
  *         super().__init__(app)
  *         self.secret = secret
 */
-  __pyx_t_7 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 8, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 18, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  if (PyDict_SetItem(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_secret, __pyx_mstate_global->__pyx_n_u_str) < (0)) __PYX_ERR(0, 8, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_service_name, __pyx_mstate_global->__pyx_n_u_str) < (0)) __PYX_ERR(0, 8, __pyx_L1_error)
-  __pyx_t_8 = __Pyx_CyFunction_New(&__pyx_mdef_10middleware_3s2s_21ServiceAuthMiddleware_1__init__, 0, __pyx_mstate_global->__pyx_n_u_ServiceAuthMiddleware___init, NULL, __pyx_mstate_global->__pyx_n_u_middleware_s2s, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[1])); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 8, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_secret, __pyx_mstate_global->__pyx_n_u_str) < (0)) __PYX_ERR(0, 18, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_service_name, __pyx_mstate_global->__pyx_n_u_str) < (0)) __PYX_ERR(0, 18, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_CyFunction_New(&__pyx_mdef_10middleware_3s2s_21ServiceAuthMiddleware_1__init__, 0, __pyx_mstate_global->__pyx_n_u_ServiceAuthMiddleware___init, NULL, __pyx_mstate_global->__pyx_n_u_middleware_s2s, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[1])); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 18, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_8);
@@ -4258,48 +4286,48 @@ __Pyx_RefNannySetupContext("PyInit_s2s", 0);
   PyList_Append(__pyx_t_4, __pyx_t_8);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_8, __pyx_t_7);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  if (__Pyx_SetNameInClass(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_init, __pyx_t_8) < (0)) __PYX_ERR(0, 8, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_init, __pyx_t_8) < (0)) __PYX_ERR(0, 18, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-  /* "middleware/s2s.py":13
+  /* "middleware/s2s.py":23
  *         self.service_name = service_name
  * 
  *     async def dispatch(self, request, call_next):             # <<<<<<<<<<<<<<
  * 
  *         token = request.headers.get("X-Service-Token")
 */
-  __pyx_t_8 = __Pyx_CyFunction_New(&__pyx_mdef_10middleware_3s2s_21ServiceAuthMiddleware_3dispatch, __Pyx_CYFUNCTION_COROUTINE, __pyx_mstate_global->__pyx_n_u_ServiceAuthMiddleware_dispatch, NULL, __pyx_mstate_global->__pyx_n_u_middleware_s2s, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0])); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 13, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_CyFunction_New(&__pyx_mdef_10middleware_3s2s_21ServiceAuthMiddleware_3dispatch, __Pyx_CYFUNCTION_COROUTINE, __pyx_mstate_global->__pyx_n_u_ServiceAuthMiddleware_dispatch, NULL, __pyx_mstate_global->__pyx_n_u_middleware_s2s, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0])); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 23, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_8);
   #endif
-  if (__Pyx_SetNameInClass(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_dispatch, __pyx_t_8) < (0)) __PYX_ERR(0, 13, __pyx_L1_error)
+  if (__Pyx_SetNameInClass(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_dispatch, __pyx_t_8) < (0)) __PYX_ERR(0, 23, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-  /* "middleware/s2s.py":6
+  /* "middleware/s2s.py":16
  * 
  * 
  * class ServiceAuthMiddleware(BaseHTTPMiddleware):             # <<<<<<<<<<<<<<
  * 
  *     def __init__(self, app, secret: str, service_name: str):
 */
-  __pyx_t_8 = __Pyx_Py3ClassCreate(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_ServiceAuthMiddleware, __pyx_t_2, __pyx_t_6, NULL, 0, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 6, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_Py3ClassCreate(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_ServiceAuthMiddleware, __pyx_t_2, __pyx_t_6, NULL, 0, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_8);
   #endif
-  if (__Pyx_CyFunction_InitClassCell(__pyx_t_4, __pyx_t_8) < (0)) __PYX_ERR(0, 6, __pyx_L1_error)
+  if (__Pyx_CyFunction_InitClassCell(__pyx_t_4, __pyx_t_8) < (0)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_ServiceAuthMiddleware, __pyx_t_8) < (0)) __PYX_ERR(0, 6, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_ServiceAuthMiddleware, __pyx_t_8) < (0)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "middleware/s2s.py":1
- * import jwt             # <<<<<<<<<<<<<<
- * from starlette.middleware.base import BaseHTTPMiddleware
- * from starlette.responses import JSONResponse
+ * """             # <<<<<<<<<<<<<<
+ * OmniBioAI middleware.s2s.
+ * 
 */
   __pyx_t_2 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
@@ -4347,7 +4375,7 @@ __Pyx_RefNannySetupContext("PyInit_s2s", 0);
 
 static int __Pyx_InitCachedBuiltins(__pyx_mstatetype *__pyx_mstate) {
   CYTHON_UNUSED_VAR(__pyx_mstate);
-  __pyx_builtin_super = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_super); if (!__pyx_builtin_super) __PYX_ERR(0, 9, __pyx_L1_error)
+  __pyx_builtin_super = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_super); if (!__pyx_builtin_super) __PYX_ERR(0, 19, __pyx_L1_error)
 
   /* Cached unbound methods */
   __pyx_mstate->__pyx_umethod_PyDict_Type_items.type = (PyObject*)&PyDict_Type;
@@ -4374,31 +4402,31 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
 static int __Pyx_InitConstants(__pyx_mstatetype *__pyx_mstate) {
   CYTHON_UNUSED_VAR(__pyx_mstate);
   {
-    const struct { const unsigned int length: 8; } index[] = {{1},{179},{15},{1},{8},{7},{6},{2},{21},{9},{17},{21},{19},{18},{5},{12},{20},{21},{30},{30},{10},{3},{18},{3},{9},{9},{18},{5},{6},{8},{7},{5},{8},{3},{7},{8},{13},{5},{3},{8},{13},{14},{10},{15},{8},{4},{7},{3},{11},{12},{7},{6},{4},{4},{7},{12},{12},{10},{25},{19},{5},{3},{5},{8},{5},{5},{5},{6},{34},{2}};
-    #if (CYTHON_COMPRESS_STRINGS) == 2 /* compression: bz2 (623 bytes) */
-const char* const cstring = "BZh91AY&SY\224f\347{\000\000\034\177\352dF \004d\203\227\300\277s\334@\277\377\377\340\000@@@@\000@@@\002\007+U\025\206\210\236\223*y#\323\320\247\224d\320\323G\250\006\214\236P\365\014\215\246Pj\236\203@%?M4I\246\232\000\000\000\000\003M\016`\023\00120\002110\230L\020\323\023L\006\204h554\032L\3214\003@\r\000\003A\243B\240.\277\0028Im\323\262\331\255]:\366P\233]\003\253\0262\344\037\260\306\265Ba\221o}\021d\325c\242\314\242\220\302\314\253P\253>\216\275\034\222\270\262\317%8\324\200\3738\355\010u\347\347\233K\275\320f\262\256\357\013oGzp[\212\003k@Rr\001\211\331\215\370\216\317l\346\321\234\020KQ\224^\241Ot\311L\021\277\351\325\030*\024N^\361\357\233j\327{]\374\275\032^+\002\013\242\364\310\260\335\036\270\3279\033\214J\300\334\223\245\363\323(\335\270\237L\334\010\000C\304=\022\000\361\006\370\333\032\234\014I\020S3<\211\364k\212o\023\211\0222\264\254\312\331\020\260\354\023\301\207\021\270\317\022l\200\345\264\244\303\321n\262\240pyhJ\022\343Q\210`\247\222\005\304\300yr-\314\263\204\002\001q\322\375\332\241Q\235\241\005\207\221p\0052.&\030\3770\205\300\241\310\352\025`\300\ti\001\373\024\350\231\020 \233Y\231\354H\272\252\021\n\307:\2212\022@|\344\324A\364\002H\262\273JB\204Rc8\031hI:\331\240\205\324\003N\343\231\221\373Q\215h\306a\020-Q\020sM\267\2200A$\024\252-\346De@\211\302\331\337\0166\331s\260\261\371\234!\2503\025\014(\247;_\220[W\004\212V\270\343\r%\"\2010\001[m{\357hsFK\2221\2102\260\010\222&\201\337\371\024\271k`z\360\2160\2213}T\r\302!N]\002\242\340\321\000\021\003\032\305\001\212\340\343\242sY2\3175\006P\210\213\334\300\337\031Q\331\n\205#<\247C\014k\000\224Y)\221\224^A\247-& \206\r\213\325S\376\261\242Q*V\300\033\001\022Ts,\261kfX\337@\301\232\244\333w\177\267\025\327\341\302\337\314\037\315\376.\344\212p\241!(\315\316\366";
-    PyObject *data = __Pyx_DecompressString(cstring, 623, 2);
+    const struct { const unsigned int length: 8; } index[] = {{1},{179},{15},{1},{8},{7},{6},{2},{21},{9},{17},{21},{19},{18},{5},{12},{20},{21},{30},{30},{10},{3},{18},{3},{9},{9},{18},{5},{6},{8},{7},{5},{8},{3},{7},{8},{13},{5},{3},{8},{13},{14},{10},{15},{8},{4},{7},{7},{3},{11},{12},{7},{6},{4},{4},{7},{12},{12},{10},{25},{19},{5},{3},{5},{8},{5},{5},{5},{6},{10},{34},{2}};
+    #if (CYTHON_COMPRESS_STRINGS) == 2 /* compression: bz2 (636 bytes) */
+const char* const cstring = "BZh91AY&SY\347cZ)\000\000\034\177\352dF \004d\203\227\300\277s\334@\277\377\377\340\000@@@@\000@@@\002&\355h6\333\206\246\211\352b4\243\301\251\2224\320\323&\200h\311\351\017SL\215\246\220\346\0010\023#\000#\023\023\t\204\301\r14\300jd4\tOQ\262\233I\350A\243\324\r\032\030\002d\003\324\006\232D\364\t\2213P\232\236\246\200\000\0002\r\001\2654\316\005\327\361A-\nf\215\266\323j\253\325\266\243\334\330\033`\327\r\306?V\345%d!\217\204\365G\317\247[c\306\224JAD\213\0223\344\313\233.\032\032\214O\226\271\222`\273pZ\014\254\311\323N\206\374\030\307\256Y\364\362q;\024\021\274\r\0026\230S\326`T\274$\312\212\235\326\024]\0040\377\242S\231Z\006=\342\214B\034?n\304\204\252@\313\361\017\224\247\374\345\263\226\234}]O\026\001\260\366g$M\271\013fS\320M!D!\224\342#\275\370h\033\367\242z\351\210\300\006R\017S\200N \340\3469-\004ETc\333\233\321\037\214\353\201x\224\021\026xN3\327\265N\n\227\332\217\0049\013\211\250\360\001\026\274\247r[\303}\222ID\255Y\256\010\304\022\272\310\221\212\t\301+\275q\"\365w\000@nj\351\236-\2117\n.xa\250\300\242yf7\365\355\030i\223\007\271\365L\201\000.\250\007]]\313a \207\014\241\306pp\322\357\030\207\215\334\357\\\310\252\211\347X\255'\250\025T\2672Db\211\031\222\305<K\027^J\033%\003\253\272\351\315_\317\010YfHU\030R\002\222\213GR\030\020\342\036\3750\233\020X\350\027:[=i\347\212l\226\320K\247\306B\231\016'F\0179\347joK\304(\322\367\226\355\324\354/:\230\000/kNt01\255\025L\241\200\304$\200\034I\225\"\315\356SL\326\"7\273\004r\022\363A8c\334\031\006\320\0314\002<8\005\230\211#\314\020\234\320Lx\351\202\254\203A)\034\034\305\304\027\3025w\004\305\"[\203h\302\033\345\020-X\3332\306\264\"-n\306\030\205\200\356^\007\303z\030$qPo@\0144\"\034\344\365\"MN[\342\236\241\305zf\335w\207\274\267_\307\013?5A\215\205\334\221N\024$9\330\326\212@";
+    PyObject *data = __Pyx_DecompressString(cstring, 636, 2);
     if (unlikely(!data)) __PYX_ERR(0, 1, __pyx_L1_error)
     const char* const bytes = __Pyx_PyBytes_AsString(data);
     #if !CYTHON_ASSUME_SAFE_MACROS
     if (likely(bytes)); else { Py_DECREF(data); __PYX_ERR(0, 1, __pyx_L1_error) }
     #endif
-    #elif (CYTHON_COMPRESS_STRINGS) != 0 /* compression: zlib (531 bytes) */
-const char* const cstring = "x\332mR\273N\034A\020\224%\007\0048p\356`,!\021\335ZB\370\221Y\370%\214d|\002\002g\243\276\231\272\333\201\331\231e\272\227c\377\340BB>\303\237B\310\347\270\367\270\343\260\304J;\333\217\252\232\336\356\256\216\263\300HMb\276\366R\347d\002\033\217\030&($\210\275a)\301\t\312\000Jf\374}<\332\377\264o(ySp\016'l\270\233\270H\314`\223\247f\322\205(!\031\351[pe~NM\237;\223\000o$\233VqO\tR#\031\206\014\206\331\245\224\262\220\204\234\254\322C\232\355\032\037\212^\022\2560\260\177PdT\177F\247(W\301at\226/\220>\223\367Vy\360\201i\022\2014\2343\027\322\025\305\340U}\tV\276\202\003?\244}\023\274\217\230S\301;\336\343\252\355\233\300\2547\376\017_;*o(\306<\207\377B\214\303\263\263\361\257G\201\303\323\275\367\037\216N\177\037\237\200\333\254\034k\307\375\265\276\337\264q\366\030\327r\202\351\252\344\203N\352\r\363\331`emHA\254}>\253\177\331\222\270\232\342,\227 u\303\324jW\373\344B\256\\.\271\323\356\203\251\363\326\322\234\006!\247\245\333\244u\270\250)U\267R\310aB\356\302\305\314\360p\331c-l\255\317\316Z\224\222\213\265\323.\2513\203\316\207<\n\257\213\263\201\355\343mA\320\360\371\\\303\r\251\272>\r\204\2263VsS\273vZ\375\354\273\210%\250d\213\244\373\005\036\334D\215\206\207:[\352c&\337\346\326\332\266\240U\356\000\270\354(>\200\n.;\2600\\\201\236q\252c\365\253a\255>+9\335\255\215\3451\245.\n\013\225\010\021TOj\233\350\\7\211\262\032%kH4^\270k\241\355\030l=\353\222\347\313\005\321\025\353\260<\370\356\345\316\335\316\307\277\227\367[\257\026'\213\376\366\305\355\353\373\255\355\305\321\r\351\347n\373\315\355\301\342\355?\335nXq";
-    PyObject *data = __Pyx_DecompressString(cstring, 531, 1);
+    #elif (CYTHON_COMPRESS_STRINGS) != 0 /* compression: zlib (542 bytes) */
+const char* const cstring = "x\332mR=O\334@\020U\244\024)H\221>\305FB\242\302\221\020\371\350\"\362%\202\024r\002\212t\253\271\335\347\363\302z\327\354\214\357\360?\2702%?#?\205\222\237\223\361qpD\302\222\327\363\361\346\355\363\314T\307Y`\244!1_\006ir2\201\215G\014S\024\022\304\301\260\224\340\004e\004%3\3716\331\335\377\270o(ySp\016'l\270\237\272H\314`\223k3\355C\224\220\214\014\035\2702?j3\344\336$\300\033\311\246S\334\343\002i\220\014CF\303\354PJYHBNV\313C\232\355\030\037\212^\022\346\030\253\277SdT\277wOQ\346\301a\367,_ }\"\357\255\326\301\007\246i\004\322x\316\\Hs\212\301+\373\n\254\365\n\016|\227\366m\360>bA\005oy\217\253nh\003\263\336\370?\374\336QzC1\346\005\374gb\034\236\235M~>\020\034\236\356\275{\177t\372\353\370\004\334e\255\261v2\\\351\373U\033g\217q%'\250\327\222\017zi6\225O\006+kC\nb\355\323Y\375\313\216\3045\024g\271\004iZ\246N\273:$\027r\345r\311\275v\037L\275\267\226\0264\0229\225n\223\352pQS\312n\245\220\303\224\334\205\213\231\341\341\262\307=\261\265>;kQJ.\326\326}Rg\006\235\017y\024\276\027g\003\333\207\333\202\240\345\363\205\206[Rv}Z\010\255f\254\346F\273vZ\375\354\373\210\025\250d\213\244\373\005\036\335D\255\206G\235\271\033w@\345\0141\223\357rgmW\320)\305\210\273\354)\336a\013.{\2600\\\201\236\261\326\351\372\365\314\326\2375\253\256\330\306\362\250\251\217\302B%B\004\325#\211S\035\357&Q\326\023e\r\211\306\013\367\035\264+\243\255gS\362b\265'\272i=V\007\317QB=X\355\377\315\363\355\233\355\017\177/o_\274\\\236,\207\353g\327\257n_l-\217\376\220~n\266^_\037,\337\374\003:\322_\253";
+    PyObject *data = __Pyx_DecompressString(cstring, 542, 1);
     if (unlikely(!data)) __PYX_ERR(0, 1, __pyx_L1_error)
     const char* const bytes = __Pyx_PyBytes_AsString(data);
     #if !CYTHON_ASSUME_SAFE_MACROS
     if (likely(bytes)); else { Py_DECREF(data); __PYX_ERR(0, 1, __pyx_L1_error) }
     #endif
-    #else /* compression: none (879 bytes) */
-const char* const bytes = ".Note that Cython is deliberately stricter than PEP-484 and rejects subclasses of builtin types. If you need to pass subclasses then set the 'annotation_typing' directive to False.X-Service-Token?add_notedisableenablegcinvalid service tokenisenabledmiddleware/s2s.pymissing service tokenservice not allowedBaseHTTPMiddlewareHS256JSONResponse__Pyx_PyDict_NextRefServiceAuthMiddlewareServiceAuthMiddleware.__init__ServiceAuthMiddleware.dispatchalgorithmsappasyncio.coroutinesaud__await__call_nextcline_in_tracebackclosedecodedispatch__doc__error__func__getheaders__init___is_coroutineitemsjwt__main____metaclass__middleware.s2s__module____mro_entries____name__nextpayloadpop__prepare____qualname__requestsecretselfsendserviceservice_name__set_name__setdefaultstarlette.middleware.basestarlette.responsesstatestrsuper__test__throwtokenvaluevalues\320\004$\320$7\260q\330\010\r\210R\210y\230\001\230\021\330\010\014\210J\220a\330\010\014\320\014\034\230A\210!";
+    #else /* compression: none (896 bytes) */
+const char* const bytes = ".Note that Cython is deliberately stricter than PEP-484 and rejects subclasses of builtin types. If you need to pass subclasses then set the 'annotation_typing' directive to False.X-Service-Token?add_notedisableenablegcinvalid service tokenisenabledmiddleware/s2s.pymissing service tokenservice not allowedBaseHTTPMiddlewareHS256JSONResponse__Pyx_PyDict_NextRefServiceAuthMiddlewareServiceAuthMiddleware.__init__ServiceAuthMiddleware.dispatchalgorithmsappasyncio.coroutinesaud__await__call_nextcline_in_tracebackclosedecodedispatch__doc__error__func__getheaders__init___is_coroutineitemsjwt__main____metaclass__middleware.s2s__module____mro_entries____name__nextoptionspayloadpop__prepare____qualname__requestsecretselfsendserviceservice_name__set_name__setdefaultstarlette.middleware.basestarlette.responsesstatestrsuper__test__throwtokenvaluevaluesverify_aud\320\004$\320$7\260q\330\010\r\210R\210y\230\001\230\021\330\010\014\210J\220a\330\010\014\320\014\034\230A\210!";
     PyObject *data = NULL;
     CYTHON_UNUSED_VAR(__Pyx_DecompressString);
     #endif
     PyObject **stringtab = __pyx_mstate->__pyx_string_tab;
     Py_ssize_t pos = 0;
-    for (int i = 0; i < 68; i++) {
+    for (int i = 0; i < 70; i++) {
       Py_ssize_t bytes_length = index[i].length;
       PyObject *string = PyUnicode_DecodeUTF8(bytes + pos, bytes_length, NULL);
       if (likely(string) && i >= 13) PyUnicode_InternInPlace(&string);
@@ -4409,7 +4437,7 @@ const char* const bytes = ".Note that Cython is deliberately stricter than PEP-4
       stringtab[i] = string;
       pos += bytes_length;
     }
-    for (int i = 68; i < 70; i++) {
+    for (int i = 70; i < 72; i++) {
       Py_ssize_t bytes_length = index[i].length;
       PyObject *string = PyBytes_FromStringAndSize(bytes + pos, bytes_length);
       stringtab[i] = string;
@@ -4420,14 +4448,14 @@ const char* const bytes = ".Note that Cython is deliberately stricter than PEP-4
       }
     }
     Py_XDECREF(data);
-    for (Py_ssize_t i = 0; i < 70; i++) {
+    for (Py_ssize_t i = 0; i < 72; i++) {
       if (unlikely(PyObject_Hash(stringtab[i]) == -1)) {
         __PYX_ERR(0, 1, __pyx_L1_error)
       }
     }
     #if CYTHON_IMMORTAL_CONSTANTS
     {
-      PyObject **table = stringtab + 68;
+      PyObject **table = stringtab + 70;
       for (Py_ssize_t i=0; i<2; ++i) {
         #if CYTHON_COMPILING_IN_CPYTHON_FREETHREADING
         #if PY_VERSION_HEX < 0x030E0000
@@ -4483,7 +4511,7 @@ typedef struct {
     unsigned int num_kwonly_args : 1;
     unsigned int nlocals : 3;
     unsigned int flags : 10;
-    unsigned int first_line : 4;
+    unsigned int first_line : 5;
 } __Pyx_PyCode_New_function_description;
 /* NewCodeObj.proto */
 static PyObject* __Pyx_PyCode_New(
@@ -4500,12 +4528,12 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
   PyObject* tuple_dedup_map = PyDict_New();
   if (unlikely(!tuple_dedup_map)) return -1;
   {
-    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 5, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS|CO_COROUTINE), 13};
+    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 5, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS|CO_COROUTINE), 23};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_request, __pyx_mstate->__pyx_n_u_call_next, __pyx_mstate->__pyx_n_u_token, __pyx_mstate->__pyx_n_u_payload};
     __pyx_mstate_global->__pyx_codeobj_tab[0] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_middleware_s2s_py, __pyx_mstate->__pyx_n_u_dispatch, __pyx_mstate->__pyx_kp_b_iso88591__3, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[0])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {4, 0, 0, 4, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 8};
+    const __Pyx_PyCode_New_function_description descr = {4, 0, 0, 4, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 18};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_app, __pyx_mstate->__pyx_n_u_secret, __pyx_mstate->__pyx_n_u_service_name};
     __pyx_mstate_global->__pyx_codeobj_tab[1] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_middleware_s2s_py, __pyx_mstate->__pyx_n_u_init, __pyx_mstate->__pyx_kp_b_iso88591_7q_Ry_Ja_A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[1])) goto bad;
   }

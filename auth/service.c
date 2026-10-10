@@ -1859,6 +1859,7 @@ int __pyx_module_is_main_auth__service = 0;
 /* Implementation of "auth.service" */
 /* #### Code section: global_var ### */
 /* #### Code section: string_decls ### */
+static const char __pyx_k_OmniBioAI_auth_service_Purpose[] = "\nOmniBioAI auth.service.\n\nPurpose:\n    Provides the auth.service module placeholder.\n\nAuthor:\n    Manish Kumar <manish@omnibioai.org>\n";
 /* #### Code section: decls ### */
 /* #### Code section: late_includes ### */
 /* #### Code section: module_state ### */
@@ -2064,7 +2065,7 @@ namespace {
   {
       PyModuleDef_HEAD_INIT,
       "service",
-      0, /* m_doc */
+      __pyx_k_OmniBioAI_auth_service_Purpose, /* m_doc */
     #if CYTHON_USE_MODULE_STATE
       sizeof(__pyx_mstatetype), /* m_size */
     #else
@@ -2306,7 +2307,9 @@ __Pyx_RefNannySetupContext("PyInit_service", 0);
   /*--- Execution code ---*/
 
   /* "auth/service.py":1
-             # <<<<<<<<<<<<<<
+ * """             # <<<<<<<<<<<<<<
+ * OmniBioAI auth.service.
+ * 
 */
   __pyx_t_2 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);

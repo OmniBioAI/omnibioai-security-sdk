@@ -1859,6 +1859,7 @@ int __pyx_module_is_main_iam__cache = 0;
 /* Implementation of "iam.cache" */
 /* #### Code section: global_var ### */
 /* #### Code section: string_decls ### */
+static const char __pyx_k_OmniBioAI_iam_cache_Purpose_Pro[] = "\nOmniBioAI iam.cache.\n\nPurpose:\n    Provides the iam.cache module placeholder.\n\nAuthor:\n    Manish Kumar <manish@omnibioai.org>\n";
 /* #### Code section: decls ### */
 /* #### Code section: late_includes ### */
 /* #### Code section: module_state ### */
@@ -2064,7 +2065,7 @@ namespace {
   {
       PyModuleDef_HEAD_INIT,
       "cache",
-      0, /* m_doc */
+      __pyx_k_OmniBioAI_iam_cache_Purpose_Pro, /* m_doc */
     #if CYTHON_USE_MODULE_STATE
       sizeof(__pyx_mstatetype), /* m_size */
     #else
@@ -2306,7 +2307,9 @@ __Pyx_RefNannySetupContext("PyInit_cache", 0);
   /*--- Execution code ---*/
 
   /* "iam/cache.py":1
-             # <<<<<<<<<<<<<<
+ * """             # <<<<<<<<<<<<<<
+ * OmniBioAI iam.cache.
+ * 
 */
   __pyx_t_2 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);

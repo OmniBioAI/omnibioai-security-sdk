@@ -188,9 +188,12 @@ python setup.py build_ext --inplace
 
 **Supported Cython version:** `>=3.2,<3.3` (pinned in `pyproject.toml`).
 The committed `*.c` files were generated with Cython 3.2.5 — that's the
-verified-reproducible baseline. Cython 3.3.0 produces a large diff
-versus 3.2.5 output that has **not** been reviewed; don't bump past
-3.2.x without regenerating and diffing all six `.c` files first.
+reproducible baseline (regenerating with 3.2.5 from current `.py`
+sources reproduces the same behavior; see the staleness note below for
+why an earlier audit pass incorrectly treated the previously-committed
+`.c` as already up to date). Cython 3.3.0 produces a large diff versus
+3.2.5 output that has **not** been reviewed; don't bump past 3.2.x
+without regenerating and diffing all six `.c` files first.
 
 **macOS:** `setup.py` previously failed on macOS with a multiprocessing
 `spawn`/`BrokenProcessPool` error. The cause: `cythonize(nthreads=...)`
@@ -220,6 +223,21 @@ embeds `.py` line numbers and source text into the `.c` output. A
 regeneration check (diff the freshly-cythonized output against the
 committed `.c`) should be run before merging any change to the six
 modules above.
+
+**Staleness finding (security-relevant):** this audit found the
+previously-committed `.c`/`.so` for `middleware/s2s.c` (and smaller
+divergences in the other five modules) did not match the behavior of
+their `.py` sources. Running the existing test suite against the
+*compiled* extensions — not just the `.py` sources — failed 5 tests in
+`test_s2s_middleware.py` / `test_security_boundaries.py`, including an
+audience-substring-bypass check and a wrong-audience check that
+returned 401 instead of 403. Regenerating all six `.c` files with the
+pinned Cython 3.2.5 and rebuilding fixes this: 103/103 tests pass
+against the rebuilt compiled extensions. This had been invisible in CI
+because the "test" job runs pytest against plain `.py` sources and the
+"package" job only import-smoke-tests the installed package — neither
+ever ran the real test suite against the compiled `.so` modules (see
+the CI fix below).
 
 **Local artifact policy:** macOS build byproducts
 (`*.cpython-*-darwin.so`, `build/lib.macosx-*/`, `build/temp.macosx-*/`,
