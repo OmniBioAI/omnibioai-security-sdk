@@ -31,18 +31,27 @@ def make_extensions(paths):
     return exts
 
 
-setup(
-    name="omnibioai-security-sdk",
-    packages=find_packages(exclude=["tests*", "migrations*"]),
-    ext_modules=cythonize(
-        make_extensions(EXTENSIONS),
-        compiler_directives={
-            "language_level": "3",
-            "boundscheck": False,
-            "wraparound": False,
-            "cdivision": True,
-        },
-        nthreads=os.cpu_count() or 4,
-    ),
-    zip_safe=False,
-)
+def build():
+    # cythonize() with nthreads > 1 spawns a multiprocessing.Pool. On
+    # platforms using the "spawn" start method (default on macOS/Windows),
+    # each worker re-imports this file as __main__; without this guard that
+    # re-triggers build() in the child, which recurses and breaks the pool.
+    setup(
+        name="omnibioai-security-sdk",
+        packages=find_packages(exclude=["tests*", "migrations*"]),
+        ext_modules=cythonize(
+            make_extensions(EXTENSIONS),
+            compiler_directives={
+                "language_level": "3",
+                "boundscheck": False,
+                "wraparound": False,
+                "cdivision": True,
+            },
+            nthreads=os.cpu_count() or 4,
+        ),
+        zip_safe=False,
+    )
+
+
+if __name__ == "__main__":
+    build()

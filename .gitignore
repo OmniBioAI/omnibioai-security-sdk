@@ -6,3 +6,12 @@ __pycache__/
 coverage.json
 htmlcov/
 .pytest_cache/
+
+# Local macOS Cython build artifacts only. Linux ARM64 *.so/*.o files
+# (cpython-313-aarch64-linux-gnu, build/lib.linux-*, build/temp.linux-*)
+# are intentionally tracked in git and must stay trackable, so this does
+# not ignore *.so or build/ wholesale.
+*.cpython-*-darwin.so
+build/lib.macosx-*/
+build/temp.macosx-*/
+*.egg-info/

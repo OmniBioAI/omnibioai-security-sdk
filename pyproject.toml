@@ -1,7 +1,11 @@
 [build-system]
 # setup.py imports Cython to compile selected modules, so it must be
-# available in pip's isolated build environment.
-requires = ["setuptools>=68", "wheel", "Cython>=3"]
+# available in pip's isolated build environment. Pinned to the 3.2.x
+# line because that's what generated the committed auth/iam/middleware/
+# policy *.c sources (verified reproducible); 3.3.0 produces a large,
+# unverified diff and must not be adopted silently (see README's build
+# section before bumping this).
+requires = ["setuptools>=68", "wheel", "Cython>=3.2,<3.3"]
 build-backend = "setuptools.build_meta"
 
 [project]

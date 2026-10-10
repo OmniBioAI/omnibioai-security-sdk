@@ -174,6 +174,74 @@ pytest tests/ -v --cov=.
 
 ---
 
+## Building the Cython Extensions
+
+`setup.py` compiles `middleware/policy.py`, `middleware/s2s.py`,
+`auth/service.py`, `policy/client.py`, `iam/client.py`, and
+`iam/cache.py` to C extensions via Cython for IP protection.
+
+```bash
+python -m pip install -e .          # triggers the build via pyproject.toml
+# or, for a local in-place build:
+python setup.py build_ext --inplace
+```
+
+**Supported Cython version:** `>=3.2,<3.3` (pinned in `pyproject.toml`).
+The committed `*.c` files were generated with Cython 3.2.5 — that's the
+verified-reproducible baseline. Cython 3.3.0 produces a large diff
+versus 3.2.5 output that has **not** been reviewed; don't bump past
+3.2.x without regenerating and diffing all six `.c` files first.
+
+**macOS:** `setup.py` previously failed on macOS with a multiprocessing
+`spawn`/`BrokenProcessPool` error. The cause: `cythonize(nthreads=...)`
+was invoked at module import time, so on `spawn`-based platforms
+(macOS/Windows) each worker process re-imported `setup.py` as
+`__main__` and re-triggered the same build recursively. The fix wraps
+the `setup()` call in `if __name__ == "__main__":` — this is the
+standard fix for top-level multiprocessing under `spawn`, and it
+preserves parallel Cythonizing (`nthreads=os.cpu_count()`) on every
+platform; it does not fall back to serial.
+
+**Linux ARM64:** `build/lib.linux-aarch64-cpython-313/*.so`,
+`build/temp.linux-aarch64-cpython-313/*.o`, and top-level
+`auth/service.cpython-313-aarch64-linux-gnu.so` /
+`iam/cache.cpython-313-aarch64-linux-gnu.so` are intentionally
+committed to git as prebuilt artifacts for that platform. Don't delete
+or regenerate-and-overwrite them as a side effect of a local build —
+run `git status`/`git diff -- build/` after any `build_ext` invocation
+to confirm they're untouched, since a plain `rm -rf build` before
+rebuilding will delete them from your working tree (recoverable with
+`git checkout -- build/`, but easy to do by accident).
+
+**Generated-source maintenance:** the `.c` files are checked in, so
+they must be regenerated and committed whenever the corresponding
+`.py` source changes — including docstring-only edits, since Cython
+embeds `.py` line numbers and source text into the `.c` output. A
+regeneration check (diff the freshly-cythonized output against the
+committed `.c`) should be run before merging any change to the six
+modules above.
+
+**Local artifact policy:** macOS build byproducts
+(`*.cpython-*-darwin.so`, `build/lib.macosx-*/`, `build/temp.macosx-*/`,
+`*.egg-info/`) are gitignored and must never be committed. They're
+untracked by design — don't `git add -A` in this repo without checking
+`git status` first.
+
+**Python compatibility:** CI builds Python 3.10–3.13 on Linux
+(`.github/workflows/ci.yml`). Locally on macOS, 3.11/3.12/3.13 are
+commonly available via Homebrew/pyenv; always let CI be the source of
+truth for versions you haven't personally built and tested.
+
+### Troubleshooting
+
+| Symptom | Cause | Fix |
+|---|---|---|
+| `BrokenProcessPool` / spawn error during `build_ext` | `cythonize()` running at import time, not under `if __name__ == "__main__":` | Already fixed in `setup.py`; if you see this again, check nothing re-introduced top-level multiprocessing. |
+| Regenerated `.c` differs from committed `.c` by more than line-number/docstring churn | Wrong Cython version, or a real source change wasn't accompanied by regeneration | Confirm `cython --version` is in `3.2.x`; if the diff is substantive, investigate before committing — don't promote blindly. |
+| `git status` shows Linux `.so`/`.o` files as modified after a local build | `build/` was deleted or overwritten by a non-Linux build | `git checkout -- build/ <path>.so` to restore; avoid `rm -rf build` before building. |
+
+---
+
 ## Design Principles
 
 - **Zero trust** — every request authenticated, authorized, audited

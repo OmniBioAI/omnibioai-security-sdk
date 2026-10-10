@@ -76,3 +76,16 @@ jobs:
               module = importlib.import_module(name)
               print(f"ok {name}: {module.__file__}")
           PY
+
+      # The "test" job above runs pytest against the plain .py sources, so it
+      # never exercises the compiled Cython extensions. Build in-place here
+      # (.so files shadow .py on import) and run the same suite against the
+      # compiled modules, in the checkout, as a behavioral check of the
+      # actual shipped artifacts.
+      - name: Build extensions in-place
+        run: |
+          python -m pip install "Cython>=3.2,<3.3" pytest pytest-asyncio httpx redis pyjwt starlette
+          python setup.py build_ext --inplace
+
+      - name: Test against compiled extensions
+        run: pytest -q
